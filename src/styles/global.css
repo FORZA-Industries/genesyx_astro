@@ -120,10 +120,3 @@
     @apply font-display font-medium text-ink;
   }
 }
-
-.wordmark {
-  display: inline-block;
-  aspect-ratio: 1517 / 214;
-  background: currentColor;
-  mask: url("/brand/wordmark.png") center / contain no-repeat;
-}

@@ -1,5 +1,5 @@
 ---
-import Wordmark from "./Wordmark.astro";
+import Logo from "./Logo.astro";
 import { site, learnLinks } from "@/data/site";
 const year = new Date().getFullYear();
 ---
@@ -7,7 +7,7 @@ const year = new Date().getFullYear();
 <footer class="mt-24 border-t border-line">
   <div class="wrap grid gap-10 py-14 md:grid-cols-[1.2fr_1fr_1fr]">
     <div class="space-y-4">
-      <Wordmark class="h-4 text-ink" />
+      <Logo class="h-7 w-auto" />
       <p class="font-display text-lg text-ink">{site.tagline}</p>
       <p class="max-w-sm text-xs leading-relaxed text-muted">{site.disclaimer}</p>
     </div>
