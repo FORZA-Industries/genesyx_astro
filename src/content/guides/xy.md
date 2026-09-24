@@ -10,11 +10,11 @@ updated: 2026-09-24
 reviewed: false
 ---
 
-<!-- PLACEHOLDER COPY: review for accuracy and ASA/CAP compliance before launch. -->
+<!-- TODO(genesyx): formula ingredients and authorised claims; ASA/CAP review. -->
 
 ## What's in the XY programme
 
-- **XY Formula:** three monthly packs. [PLACEHOLDER: ingredients and authorised claims.]
+- **XY Formula:** three monthly packs.
 - **XY nutrition guide:** a route-specific eating plan for the 90 days.
 - **Measure:** vaginal pH test strips, ovulation tests and pregnancy tests.
 - **Companion app:** your pH readings, cycle day and timing window in one calm view.

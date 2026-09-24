@@ -8,7 +8,7 @@ updated: 2026-09-24
 reviewed: false
 ---
 
-<!-- PLACEHOLDER COPY: review for accuracy and ASA/CAP compliance before launch. -->
+<!-- TODO(genesyx): named reviewer; ASA/CAP review. -->
 
 ## Where the theory comes from
 

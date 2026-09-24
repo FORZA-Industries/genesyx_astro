@@ -48,4 +48,5 @@ export const programme = [
   { n: "04", title: "Companion app", detail: "pH · cycle · timing" },
 ] as const;
 
-export const indexable = import.meta.env.PUBLIC_INDEXABLE === "true";
+// Crawling and indexing are on by default. Set PUBLIC_INDEXABLE=false to hide a build (e.g. staging).
+export const indexable = import.meta.env.PUBLIC_INDEXABLE !== "false";
