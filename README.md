@@ -43,11 +43,15 @@ Apply `supabase/migrations/20260924000000_create_waitlist.sql`. The anon/publish
 `INSERT` into `public.waitlist`; nobody can read the list with it. Duplicate sign-ups (same email +
 route) return 409, which the form treats as success.
 
-## Deploying to Cloudflare
+## Deploying
 
-Workers static assets via `wrangler.jsonc` (`npx wrangler deploy` after `npm run build`), or
-Cloudflare Pages with build command `npm run build`, output `dist`. Set the
-env vars above in the Cloudflare dashboard. `public/_headers` sets security and cache headers.
+**Vercel:** import the repo at vercel.com/new. Astro is auto-detected and `vercel.json` sets the build,
+clean URLs (`/faq` serves `faq.html`) and security/cache headers. Add the env vars above under
+Project → Settings → Environment Variables. Every PR gets its own preview URL.
+
+**Cloudflare:** Workers static assets via `wrangler.jsonc` (`npx wrangler deploy` after `npm run build`),
+or Cloudflare Pages with build command `npm run build` and output `dist`. `public/_headers` sets the same
+headers there.
 
 ## Before launch
 
