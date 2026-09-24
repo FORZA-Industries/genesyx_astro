@@ -1,10 +1,9 @@
 # Genesyx marketing site
 
-Astro 7 + Tailwind v4 static site for the Genesyx XX / XY waitlist launch. Lives alongside the
-companion-app prototype in the repo root and shares its brand palette.
+Astro 7 + Tailwind v4 static site for the Genesyx XX / XY waitlist launch. Shares its brand palette
+with the Genesyx companion app.
 
 ```bash
-cd site
 npm install
 npm run dev      # http://localhost:4321
 npm run build    # astro check + static build to dist/
@@ -47,7 +46,7 @@ route) return 409, which the form treats as success.
 ## Deploying to Cloudflare
 
 Workers static assets via `wrangler.jsonc` (`npx wrangler deploy` after `npm run build`), or
-Cloudflare Pages with root directory `site`, build command `npm run build`, output `dist`. Set the
+Cloudflare Pages with build command `npm run build`, output `dist`. Set the
 env vars above in the Cloudflare dashboard. `public/_headers` sets security and cache headers.
 
 ## Before launch
