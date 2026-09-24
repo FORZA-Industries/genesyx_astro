@@ -16,7 +16,10 @@ import { paths } from "@/data/site";
       </p>
     </div>
 
-    <form id="waitlist" class="space-y-5" novalidate>
+    <form id="waitlist" method="post" class="space-y-5" novalidate>
+      <noscript>
+        <p class="text-sm text-ink">Please enable JavaScript to join the waitlist.</p>
+      </noscript>
       <fieldset>
         <legend class="sr-only">Choose your programme</legend>
         <div class="border-t border-line">

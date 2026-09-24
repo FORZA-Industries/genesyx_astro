@@ -4,6 +4,7 @@ description: "The Genesyx XY programme is a 90-day preconception programme for c
 eyebrow: "XY programme"
 summary: "The Genesyx XY programme is a 90-day preconception programme for couples hoping for a boy. It follows the Shettles approach, with an XY formula, an XY nutrition guide, vaginal pH and ovulation tests, and a companion app for timing. No outcome is guaranteed."
 path: xy
+type: page
 order: 4
 updated: 2026-09-24
 reviewed: false

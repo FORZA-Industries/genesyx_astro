@@ -10,11 +10,11 @@ import Questions from "@/components/sections/Questions.astro";
 import Join from "@/components/sections/Join.astro";
 import { site } from "@/data/site";
 import { faqPage } from "@/lib/schema";
-import { cleanForMachines } from "@/lib/text";
+import { faqForSchema } from "@/lib/text";
 
-const featured = (await getCollection("faq", (e) => e.data.featured))
-  .sort((a, b) => a.data.order - b.data.order)
-  .map((e) => ({ question: e.data.question, answer: cleanForMachines(e.data.answer) }));
+const featured = faqForSchema(
+  (await getCollection("faq", (e) => e.data.featured)).sort((a, b) => a.data.order - b.data.order),
+);
 ---
 
 <BaseLayout title={site.name} description={site.description} schema={[faqPage(featured)]}>

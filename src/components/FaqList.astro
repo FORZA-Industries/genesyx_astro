@@ -2,8 +2,11 @@
 import type { CollectionEntry } from "astro:content";
 interface Props {
   items: CollectionEntry<"faq">[];
+  /** h3 under a section h2 (landing page); h2 directly under the page h1 (/faq). */
+  headingLevel?: "h2" | "h3";
 }
-const { items } = Astro.props;
+const { items, headingLevel = "h3" } = Astro.props;
+const Heading = headingLevel;
 ---
 
 <div class="border-t border-line">
@@ -11,9 +14,9 @@ const { items } = Astro.props;
     <details class="group border-b border-line" id={item.id}>
       <summary class="flex cursor-pointer list-none items-center gap-6 py-6 text-ink [&::-webkit-details-marker]:hidden">
         <span class="w-5 text-[0.625rem] text-muted">{String(i + 1).padStart(2, "0")}</span>
-        <h3 class="flex-1 font-display text-base font-medium tracking-normal">
+        <Heading class="flex-1 font-display text-base font-medium tracking-normal">
           {item.data.question}
-        </h3>
+        </Heading>
         <span aria-hidden="true" class="text-lg transition group-open:rotate-45">
           +
         </span>
