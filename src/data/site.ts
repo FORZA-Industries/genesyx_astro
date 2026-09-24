@@ -30,6 +30,9 @@ export const nav = [
 export const learnLinks = [
   { href: "/shettles-method", label: "The Shettles method" },
   { href: "/vaginal-ph", label: "Vaginal pH" },
+  { href: "/ovulation-tests", label: "Ovulation tests" },
+  { href: "/how-to-conceive-a-girl", label: "How to conceive a girl" },
+  { href: "/how-to-conceive-a-boy", label: "How to conceive a boy" },
   { href: "/xx", label: "XX programme" },
   { href: "/xy", label: "XY programme" },
   { href: "/evidence", label: "The evidence" },

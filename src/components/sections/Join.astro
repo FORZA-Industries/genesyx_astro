@@ -70,6 +70,16 @@ import { paths } from "@/data/site";
         aria-live="polite"
         class="text-sm font-medium text-ink"
       ></p>
+      <div id="waitlist-share" class="border-t border-line pt-5" hidden>
+        <p class="text-sm">Trying together? Send the plan to your partner.</p>
+        <button
+          type="button"
+          id="waitlist-share-btn"
+          class="mt-3 inline-flex min-h-11 items-center gap-2 rounded-sm border border-ink px-4 text-sm font-medium text-ink transition hover:bg-ink hover:text-white"
+        >
+          Share with your partner <span aria-hidden="true">↗</span>
+        </button>
+      </div>
     </form>
   </div>
 </section>
@@ -125,7 +135,39 @@ import { paths } from "@/data/site";
     status.textContent = result.message;
     if (result.ok) {
       form.reset();
+      showShare(path);
       window.dispatchEvent(new CustomEvent("gx:waitlist", { detail: { path } }));
+    }
+  });
+
+  // Post-signup referral: partners are the most likely second signup for a couples' product.
+  const share = document.querySelector<HTMLElement>("#waitlist-share");
+  const shareBtn = document.querySelector<HTMLButtonElement>("#waitlist-share-btn");
+  let sharePath = "xx";
+
+  function showShare(path: string) {
+    sharePath = path;
+    if (share) share.hidden = false;
+  }
+
+  shareBtn?.addEventListener("click", async () => {
+    const url = new URL("/", location.origin);
+    url.searchParams.set("path", sharePath);
+    url.searchParams.set("utm_source", "partner");
+    url.searchParams.set("utm_medium", "share");
+    url.hash = "join";
+    const text = "I've joined the Genesyx waitlist. Here's the plan we could follow together.";
+
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: "Genesyx", text, url: url.toString() });
+      } else {
+        await navigator.clipboard.writeText(`${text} ${url}`);
+        shareBtn.textContent = "Link copied";
+      }
+      window.dispatchEvent(new CustomEvent("gx:share", { detail: { path: sharePath } }));
+    } catch {
+      // User cancelled the share sheet; nothing to do.
     }
   });
 </script>
