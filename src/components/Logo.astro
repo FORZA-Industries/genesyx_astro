@@ -1,0 +1,20 @@
+---
+import { Image } from "astro:assets";
+import logo from "@/assets/images/logo-horizontal.png";
+
+interface Props {
+  class?: string;
+  /** Eager-load in the header (above the fold); lazy elsewhere. */
+  eager?: boolean;
+}
+const { class: className = "h-7 w-auto", eager = false } = Astro.props;
+---
+
+<Image
+  src={logo}
+  alt="Genesyx"
+  height={28}
+  densities={[1, 2]}
+  loading={eager ? "eager" : "lazy"}
+  class={className}
+/>

@@ -11,7 +11,7 @@ export function organization(base: URL | string): Thing {
     name: site.name,
     legalName: site.legalName,
     url: abs("/", base),
-    logo: abs("/brand/wordmark.png", base),
+    logo: abs("/brand/icon-512.png", base),
     email: site.email,
     foundingDate: String(site.foundingYear),
     description: site.description,
