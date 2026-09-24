@@ -43,8 +43,8 @@ before you expect to ovulate and test at the same time each day.
 ## How Genesyx uses your results
 
 Log each test in the Genesyx companion app and it shows your timing window for your chosen route, alongside
-your vaginal pH readings. See how timing differs for the [XX](/how-to-conceive-a-girl) and
-[XY](/how-to-conceive-a-boy) routes.
+your vaginal pH readings. See how timing differs for the
+[XX and XY routes](/how-to-conceive-a-girl-or-boy).
 
 ## When to get advice
 

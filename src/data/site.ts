@@ -1,5 +1,5 @@
 // Single source of truth for brand facts. Feeds the UI, JSON-LD and llms.txt.
-// Anything marked TODO is a placeholder awaiting confirmation from Genesyx.
+// Only facts confirmed by the design or the business belong here; never add guesses.
 
 export const site = {
   name: "Genesyx",
@@ -9,13 +9,9 @@ export const site = {
   shortDescription: "A considered 90-day preconception programme inspired by the Shettles theory.",
   locale: "en_GB",
   lang: "en-GB",
-  // TODO: confirm registered company details.
-  legalName: "Genesyx Ltd",
-  email: "hello@genesyx.com",
-  country: "GB",
-  foundingYear: 2026,
-  sameAs: [] as string[], // TODO: social profiles
-  releaseWindow: "2027", // TODO: confirm first-release window
+  // Not yet confirmed: legal entity, contact email, address, service area, release date.
+  // Add them here (and they flow into the footer, JSON-LD and llms.txt) once supplied.
+  sameAs: [] as string[],
   disclaimer:
     "Evidence for the Shettles theory is mixed. Genesyx helps you follow the theory consistently; no outcome is guaranteed.",
 } as const;
@@ -31,8 +27,7 @@ export const learnLinks = [
   { href: "/shettles-method", label: "The Shettles method" },
   { href: "/vaginal-ph", label: "Vaginal pH" },
   { href: "/ovulation-tests", label: "Ovulation tests" },
-  { href: "/how-to-conceive-a-girl", label: "How to conceive a girl" },
-  { href: "/how-to-conceive-a-boy", label: "How to conceive a boy" },
+  { href: "/how-to-conceive-a-girl-or-boy", label: "Conceiving a girl or boy" },
   { href: "/xx", label: "XX programme" },
   { href: "/xy", label: "XY programme" },
   { href: "/evidence", label: "The evidence" },

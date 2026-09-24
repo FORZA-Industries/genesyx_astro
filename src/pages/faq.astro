@@ -3,21 +3,20 @@ import { getCollection } from "astro:content";
 import GuideLayout from "@/layouts/GuideLayout.astro";
 import FaqList from "@/components/FaqList.astro";
 import { faqPage } from "@/lib/schema";
-import { cleanForMachines } from "@/lib/text";
+import { faqForSchema } from "@/lib/text";
 
 const items = (await getCollection("faq")).sort((a, b) => a.data.order - b.data.order);
-const schema = faqPage(
-  items.map((e) => ({ question: e.data.question, answer: cleanForMachines(e.data.answer) })),
-);
+const schema = faqPage(faqForSchema(items));
 ---
 
 <GuideLayout
   title="Frequently asked questions"
   description="Answers to common questions about Genesyx, the Shettles method, vaginal pH testing, the XX and XY programmes and what Genesyx can and cannot promise."
   eyebrow="FAQ"
+  type="page"
   summary="Clear answers, no false certainty. Genesyx is a 90-day XX / XY preconception programme inspired by the Shettles theory. It cannot guarantee a girl or a boy; it helps you follow the approach consistently."
   updated={new Date("2026-09-24")}
   schema={[schema]}
 >
-  <FaqList items={items} />
+  <FaqList items={items} headingLevel="h2" />
 </GuideLayout>

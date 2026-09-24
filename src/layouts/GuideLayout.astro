@@ -2,7 +2,8 @@
 import BaseLayout from "./BaseLayout.astro";
 import GuideCta from "@/components/GuideCta.astro";
 import { site, learnLinks, type Path } from "@/data/site";
-import { article, breadcrumbs } from "@/lib/schema";
+import { article, breadcrumbs, webPage } from "@/lib/schema";
+import { cleanPath } from "@/lib/url";
 
 interface Props {
   title: string;
@@ -11,12 +12,22 @@ interface Props {
   summary: string;
   updated: Date;
   path?: Path;
+  type?: "article" | "page";
   schema?: Record<string, unknown>[];
 }
 
-const { title, description, eyebrow, summary, updated, path, schema = [] } = Astro.props;
+const {
+  title,
+  description,
+  eyebrow,
+  summary,
+  updated,
+  path,
+  type = "article",
+  schema = [],
+} = Astro.props;
 const base = Astro.site ?? Astro.url;
-const pathname = Astro.url.pathname;
+const pathname = cleanPath(Astro.url.pathname);
 const related = learnLinks.filter((l) => l.href !== pathname);
 const updatedLabel = updated.toLocaleDateString("en-GB", {
   day: "numeric",
@@ -28,9 +39,9 @@ const updatedLabel = updated.toLocaleDateString("en-GB", {
 <BaseLayout
   title={title}
   description={description}
-  ogType="article"
+  ogType={type === "article" ? "article" : "website"}
   schema={[
-    article({ title, description, updated, path: pathname }, base),
+    (type === "article" ? article : webPage)({ title, description, updated, path: pathname }, base),
     breadcrumbs(
       [
         { name: site.name, path: "/" },

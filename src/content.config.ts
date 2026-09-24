@@ -24,6 +24,8 @@ const guides = defineCollection({
     // One-paragraph answer shown at the top of the page for readers and AI engines.
     summary: z.string(),
     path: z.enum(["xx", "xy"]).optional(),
+    // "page" for programme pages (WebPage schema); "article" for editorial guides.
+    type: z.enum(["article", "page"]).default("article"),
     order: z.number(),
     updated: z.coerce.date(),
     // Flip to true once copy has been reviewed for accuracy and compliant claims.

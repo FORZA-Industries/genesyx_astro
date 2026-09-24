@@ -25,7 +25,10 @@ jobs:
       - name: Check machine-readable outputs
         run: |
           test -s dist/llms.txt
-          test -s dist/llms-full.txt
+          test ! -e dist/llms-full.txt
           grep -q "^# Genesyx" dist/llms.txt
           grep -q "Disallow: /" dist/robots.txt
-          ! grep -q "PLACEHOLDER" dist/llms.txt dist/llms-full.txt
+          ! grep -q "PLACEHOLDER" dist/llms.txt
+          # No stray canonical domain, and the 404 page is never indexable.
+          ! grep -rq "genesyx\.com" dist --include=*.html --include=*.xml --include=*.txt
+          grep -q 'name="robots" content="noindex' dist/404.html

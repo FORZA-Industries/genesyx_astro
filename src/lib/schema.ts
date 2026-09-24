@@ -9,11 +9,8 @@ export function organization(base: URL | string): Thing {
     "@type": "Organization",
     "@id": abs("/#organization", base),
     name: site.name,
-    legalName: site.legalName,
     url: abs("/", base),
     logo: abs("/brand/icon-512.png", base),
-    email: site.email,
-    foundingDate: String(site.foundingYear),
     description: site.description,
     ...(site.sameAs.length ? { sameAs: site.sameAs } : {}),
   };
@@ -67,7 +64,22 @@ export function article(
     mainEntityOfPage: abs(data.path, base),
     author: { "@id": abs("/#organization", base) },
     publisher: { "@id": abs("/#organization", base) },
-    about: { "@type": "Thing", name: "Shettles method" },
+  };
+}
+
+export function webPage(
+  data: { title: string; description: string; updated: Date; path: string },
+  base: URL | string,
+): Thing {
+  return {
+    "@type": "WebPage",
+    "@id": abs(data.path, base),
+    url: abs(data.path, base),
+    name: data.title,
+    description: data.description,
+    dateModified: data.updated.toISOString(),
+    inLanguage: site.lang,
+    isPartOf: { "@id": abs("/#website", base) },
   };
 }
 

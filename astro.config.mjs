@@ -4,8 +4,8 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 
-// Set SITE_URL in the Cloudflare build environment once the domain is confirmed.
-const site = process.env.SITE_URL ?? "https://genesyx.com";
+// Canonical origin. Override with SITE_URL when a custom domain is added; no trailing slash.
+const site = process.env.SITE_URL ?? "https://genesyx.pages.dev";
 
 // Content collections aren't available in config, so read each guide's `updated` frontmatter directly.
 const guidesDir = new URL("./src/content/guides/", import.meta.url);
