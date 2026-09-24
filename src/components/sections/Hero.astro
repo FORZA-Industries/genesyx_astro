@@ -1,0 +1,64 @@
+---
+import { Picture } from "astro:assets";
+import PathChoice from "@/components/PathChoice.astro";
+import phone from "@/assets/images/app-phone.png";
+import xx from "@/assets/images/formula-xx.png";
+import xy from "@/assets/images/formula-xy.png";
+---
+
+<section class="wrap grid items-center gap-10 pt-10 pb-16 lg:grid-cols-[1fr_1.1fr] lg:pt-16 lg:pb-24">
+  <div class="max-w-xl">
+    <p class="eyebrow flex items-center gap-3">
+      <span
+        class="h-0.5 w-6 rounded-full bg-linear-to-r from-lavender via-pink to-aqua"
+        aria-hidden="true"
+      ></span>
+      The XX / XY preconception programme
+    </p>
+    <h1 class="display mt-6">Try with intention.</h1>
+    <p class="mt-6 max-w-sm text-lg leading-snug text-body">
+      A considered 90-day programme inspired by the Shettles theory.
+    </p>
+
+    <p class="eyebrow mt-9 text-[0.625rem] text-ink" id="hoping-label">
+      I'm hoping for
+    </p>
+    <div class="mt-3 flex flex-col gap-3 sm:flex-row" role="group" aria-labelledby="hoping-label">
+      <PathChoice path="xx" />
+      <PathChoice path="xy" />
+    </div>
+    <p class="mt-5 text-xs text-muted">
+      Supplements · nutrition · vaginal pH tests · cycle timing · companion app
+    </p>
+  </div>
+
+  <div class="relative mx-auto aspect-[1.08] w-full max-w-xl" aria-hidden="true">
+    <div class="absolute inset-[12%] rounded-full bg-radial from-pink/40 via-aqua/25 to-transparent blur-3xl"></div>
+    <Picture
+      src={phone}
+      alt=""
+      formats={["avif", "webp"]}
+      widths={[400, 640, 800]}
+      sizes="(min-width: 1024px) 320px, 55vw"
+      loading="eager"
+      fetchpriority="high"
+      class="absolute top-0 left-1/2 w-[54%] -translate-x-1/2"
+    />
+    <Picture
+      src={xx}
+      alt=""
+      formats={["avif", "webp"]}
+      widths={[240, 400]}
+      sizes="(min-width: 1024px) 180px, 28vw"
+      class="absolute bottom-[2%] left-0 w-[33%] -rotate-3"
+    />
+    <Picture
+      src={xy}
+      alt=""
+      formats={["avif", "webp"]}
+      widths={[240, 400]}
+      sizes="(min-width: 1024px) 180px, 28vw"
+      class="absolute right-0 bottom-[8%] w-[33%] rotate-3"
+    />
+  </div>
+</section>

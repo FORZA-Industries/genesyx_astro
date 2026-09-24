@@ -1,0 +1,26 @@
+---
+import Wordmark from "./Wordmark.astro";
+import { nav } from "@/data/site";
+---
+
+<header class="sticky top-0 z-40 border-b border-line/70 bg-canvas/85 backdrop-blur-md">
+  <div class="wrap flex h-16 items-center justify-between gap-6">
+    <a href="/" class="shrink-0" aria-label="Genesyx home">
+      <Wordmark class="h-3.5 text-ink sm:h-4" />
+    </a>
+    <nav aria-label="Primary" class="hidden md:block">
+      <ul class="flex items-center gap-8 text-[0.8125rem] text-ink">
+        {nav.map((item) => (
+          <li>
+            <a href={item.href} class="transition hover:text-lavender">
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <a href="/#join" class="btn-primary px-4 py-2.5 text-[0.8125rem]">
+      Choose XX or XY <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+</header>

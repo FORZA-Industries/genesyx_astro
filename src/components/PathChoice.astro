@@ -1,0 +1,20 @@
+---
+import { paths, type Path } from "@/data/site";
+interface Props {
+  path: Path;
+}
+const { path } = Astro.props;
+const p = paths[path];
+---
+
+<a
+  href="/#join"
+  data-path={path}
+  class="group flex min-h-14 flex-1 items-center gap-3 rounded-full border border-line bg-white px-5 py-3 text-ink shadow-[0_1px_0_rgb(52_52_145/0.04)] transition hover:border-lavender/40 hover:shadow-md"
+>
+  <span class="font-display text-lg font-medium">{p.label}</span>
+  <span class="text-xs text-muted">{p.hope}</span>
+  <span aria-hidden="true" class="ml-auto transition group-hover:translate-x-0.5">
+    →
+  </span>
+</a>

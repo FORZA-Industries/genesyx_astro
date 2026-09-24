@@ -1,0 +1,26 @@
+---
+import { getCollection } from "astro:content";
+import FaqList from "@/components/FaqList.astro";
+
+const featured = (await getCollection("faq", (e) => e.data.featured)).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+
+<section id="questions" class="wrap pb-24 lg:pb-32">
+  <div class="grid gap-10 lg:grid-cols-[1fr_1.4fr]">
+    <div>
+      <p class="eyebrow">What matters</p>
+      <h2 class="display-md mt-4">
+        Clear answers. <span class="accent">No false certainty.</span>
+      </h2>
+      <a
+        href="/faq"
+        class="mt-8 inline-block text-sm font-medium text-ink underline decoration-pink decoration-2 underline-offset-4"
+      >
+        See all questions →
+      </a>
+    </div>
+    <FaqList items={featured} />
+  </div>
+</section>

@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Hero from "@/components/sections/Hero.astro";
+import Why from "@/components/sections/Why.astro";
+import Inside from "@/components/sections/Inside.astro";
+import AppView from "@/components/sections/AppView.astro";
+import Together from "@/components/sections/Together.astro";
+import Questions from "@/components/sections/Questions.astro";
+import Join from "@/components/sections/Join.astro";
+import { site } from "@/data/site";
+import { faqPage } from "@/lib/schema";
+import { cleanForMachines } from "@/lib/text";
+
+const featured = (await getCollection("faq", (e) => e.data.featured))
+  .sort((a, b) => a.data.order - b.data.order)
+  .map((e) => ({ question: e.data.question, answer: cleanForMachines(e.data.answer) }));
+---
+
+<BaseLayout title={site.name} description={site.description} schema={[faqPage(featured)]}>
+  <Hero />
+  <Why />
+  <Inside />
+  <AppView />
+  <Together />
+  <Questions />
+  <Join />
+</BaseLayout>

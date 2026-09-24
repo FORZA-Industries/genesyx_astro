@@ -1,0 +1,55 @@
+---
+const cards = [
+  { n: "01", title: "Vaginal pH", value: "4.4", note: "Latest reading", tint: "from-pink/25" },
+  {
+    n: "02",
+    title: "Cycle timing",
+    value: "Day 12",
+    note: "Current cycle day",
+    tint: "from-aqua/30",
+  },
+  { n: "03", title: "Nutrition", value: "Week 4", note: "Your selected guide", tint: "from-white" },
+  {
+    n: "04",
+    title: "Formula",
+    value: "Month 1",
+    note: "Your XX programme",
+    tint: "from-lavender-soft/20",
+  },
+];
+---
+
+<section id="app" class="wrap">
+  <div class="rounded-[2rem] bg-linear-to-br from-pink/15 via-white/60 to-aqua/20 px-6 py-14 sm:px-12 lg:px-20 lg:py-20">
+    <p class="eyebrow">The companion app</p>
+    <div class="mt-6 grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-center">
+      <h2 class="display-md">
+        Everything in <span class="accent">one calm view.</span>
+      </h2>
+      <p class="max-w-xs text-sm leading-relaxed">
+        Follow your selected programme with your formula, nutrition, vaginal pH and cycle timing
+        together.
+      </p>
+    </div>
+    <ul class="mt-12 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
+      {cards.map((c) => (
+        <li
+          class:list={[
+            "flex aspect-square flex-col rounded-card border border-white bg-linear-to-br to-white/70 p-4 shadow-sm sm:p-5 lg:aspect-[1/1.05]",
+            c.tint,
+          ]}
+        >
+          <span class="text-[0.5625rem] text-muted">{c.n}</span>
+          <span class="mt-3 font-display text-sm font-medium text-ink">{c.title}</span>
+          <span class="mt-auto font-display text-3xl font-medium tracking-tight text-ink sm:text-4xl">
+            {c.value}
+          </span>
+          <span class="mt-1 text-[0.625rem] text-muted">{c.note}</span>
+        </li>
+      ))}
+    </ul>
+    <p class="mt-4 text-[0.625rem] text-muted">
+      Illustrative readings. App preview, subject to change.
+    </p>
+  </div>
+</section>

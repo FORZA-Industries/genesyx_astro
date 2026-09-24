@@ -1,0 +1,41 @@
+---
+import { Picture } from "astro:assets";
+import kit from "@/assets/images/programme-kit-xx.jpg";
+import { programme } from "@/data/site";
+---
+
+<section id="inside" class="wrap py-24 lg:py-32">
+  <div class="grid gap-6 lg:grid-cols-[1fr_2fr]">
+    <p class="eyebrow pt-3">Your 90-day programme</p>
+    <h2 class="display-md">
+      Everything required for <span class="accent">one clear route.</span>
+    </h2>
+  </div>
+
+  <div class="mt-14 grid gap-8 lg:grid-cols-[2.3fr_1fr] lg:gap-0">
+    <figure class="relative">
+      <Picture
+        src={kit}
+        alt="The Genesyx XX programme box, with three monthly formula packs, pH test strips, ovulation tests, pregnancy tests and the XX programme nutrition guide"
+        formats={["avif", "webp"]}
+        widths={[480, 800, 1152]}
+        sizes="(min-width: 1024px) 700px, 100vw"
+        class="h-full w-full object-cover"
+      />
+      <figcaption class="absolute right-3 bottom-3 bg-white/95 px-2.5 py-1.5 text-[0.5625rem] font-semibold tracking-[0.14em] text-ink uppercase">
+        XX programme shown · XY follows the equivalent structure
+      </figcaption>
+    </figure>
+    <ol class="border-t border-line lg:ml-0">
+      {programme.map((item) => (
+        <li class="flex gap-8 border-b border-line py-7 lg:px-6 lg:py-10">
+          <span class="pt-1 text-[0.625rem] text-lavender">{item.n}</span>
+          <div>
+            <h3 class="text-lg font-medium">{item.title}</h3>
+            <p class="mt-1 text-xs text-muted">{item.detail}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

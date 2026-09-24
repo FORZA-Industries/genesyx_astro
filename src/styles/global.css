@@ -1,0 +1,129 @@
+@import "tailwindcss";
+@import "@fontsource-variable/outfit";
+@import "@fontsource-variable/inter";
+
+/* Brand tokens sampled from the proposed landing design; aligned with the companion app palette. */
+@theme {
+  --font-display: "Outfit Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #343491;
+  --color-lavender: #4d4daa;
+  --color-lavender-soft: #8888d3;
+  --color-pink: #dda4d3;
+  --color-pink-soft: #debed2;
+  --color-aqua: #8dd2e2;
+  --color-blue: #57a1ce;
+  --color-body: #555582;
+  --color-muted: #6e6e94;
+  --color-canvas: #f5f5f9;
+  --color-line: #e3e3ee;
+
+  --radius-card: 1.25rem;
+  --container-page: 76rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-canvas font-sans text-body antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display text-ink;
+    text-wrap: balance;
+    letter-spacing: -0.03em;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-lavender);
+    outline-offset: 3px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .wrap {
+    @apply mx-auto w-full max-w-(--container-page) px-4 sm:px-6 lg:px-8;
+  }
+  .eyebrow {
+    @apply font-display text-[0.6875rem] font-semibold tracking-[0.22em] text-lavender uppercase;
+  }
+  .display {
+    @apply font-display text-[2.75rem] leading-[0.98] font-medium sm:text-6xl lg:text-7xl;
+  }
+  .display-md {
+    @apply font-display text-4xl leading-[1.02] font-medium sm:text-5xl lg:text-6xl;
+  }
+  .accent {
+    @apply text-lavender;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-3 rounded-sm bg-ink px-5 py-3 text-sm font-medium text-white transition hover:bg-lavender;
+  }
+
+  /* Long-form guide typography */
+  .prose-gx {
+    @apply text-base leading-relaxed text-body;
+  }
+  .prose-gx h2 {
+    @apply mt-12 mb-4 text-2xl font-medium sm:text-3xl;
+  }
+  .prose-gx h3 {
+    @apply mt-8 mb-3 text-xl font-medium;
+  }
+  .prose-gx p,
+  .prose-gx ul,
+  .prose-gx ol {
+    @apply mb-5;
+  }
+  .prose-gx ul {
+    @apply list-disc pl-5;
+  }
+  .prose-gx ol {
+    @apply list-decimal pl-5;
+  }
+  .prose-gx li {
+    @apply mb-2;
+  }
+  .prose-gx a {
+    @apply font-medium text-ink underline decoration-pink decoration-2 underline-offset-4 hover:decoration-ink;
+  }
+  .prose-gx strong {
+    @apply font-semibold text-ink;
+  }
+  .prose-gx table {
+    @apply mb-6 block w-full overflow-x-auto text-left text-sm;
+  }
+  .prose-gx th,
+  .prose-gx td {
+    @apply border-b border-line px-3 py-3 align-top;
+  }
+  .prose-gx th {
+    @apply font-display font-medium text-ink;
+  }
+}
+
+.wordmark {
+  display: inline-block;
+  aspect-ratio: 1517 / 214;
+  background: currentColor;
+  mask: url("/brand/wordmark.png") center / contain no-repeat;
+}

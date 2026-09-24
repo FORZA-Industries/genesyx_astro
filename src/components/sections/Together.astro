@@ -1,0 +1,30 @@
+---
+import { Picture } from "astro:assets";
+import couple from "@/assets/images/couple.jpg";
+---
+
+<section class="wrap py-24 lg:py-32">
+  <div class="relative overflow-hidden">
+    <Picture
+      src={couple}
+      alt="A couple sharing a quiet moment by a window"
+      formats={["avif", "webp"]}
+      widths={[640, 1024, 1600]}
+      sizes="(min-width: 1216px) 1152px, 100vw"
+      class="aspect-[4/5] w-full object-cover object-left sm:aspect-[16/10]"
+    />
+    <div
+      class="absolute inset-0 bg-linear-to-t from-white via-white/70 to-transparent sm:bg-linear-to-r sm:from-transparent sm:via-white/40 sm:to-white"
+      aria-hidden="true"
+    ></div>
+    <div class="absolute inset-x-6 bottom-8 sm:inset-x-auto sm:top-1/2 sm:right-10 sm:bottom-auto sm:w-[42%] sm:-translate-y-1/2">
+      <p class="eyebrow">A private hope</p>
+      <h2 class="display-md mt-4">
+        A plan you can <span class="accent">follow together.</span>
+      </h2>
+      <p class="mt-5 max-w-sm text-sm leading-relaxed">
+        One shared programme, one calm app, and no guesswork about what comes next.
+      </p>
+    </div>
+  </div>
+</section>

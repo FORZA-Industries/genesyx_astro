@@ -1,0 +1,27 @@
+---
+import GuideLayout from "@/layouts/GuideLayout.astro";
+import { site } from "@/data/site";
+---
+
+<GuideLayout
+  title="Privacy policy"
+  description="How Genesyx collects and uses your information."
+  eyebrow="Legal"
+  summary="PLACEHOLDER: this privacy policy must be written or reviewed by a qualified adviser before launch."
+  updated={new Date("2026-09-24")}
+>
+  <h2>What we collect</h2>
+  <p>
+    When you join the waitlist we store your email address, the programme you chose (XX or XY), the
+    page you joined from and campaign parameters from the link you followed.
+  </p>
+  <h2>Why</h2>
+  <p>To email you about the release of your chosen programme. We never sell your data.</p>
+  <h2>Where it is stored</h2>
+  <p>[PLACEHOLDER: Supabase region, processors, retention period.]</p>
+  <h2>Your rights</h2>
+  <p>
+    Under UK GDPR you can ask to access, correct or delete your data at any time by emailing{" "}
+    <a href={`mailto:${site.email}`}>{site.email}</a>.
+  </p>
+</GuideLayout>

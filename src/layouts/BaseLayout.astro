@@ -1,0 +1,68 @@
+---
+import "@/styles/global.css";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { site, indexable } from "@/data/site";
+import { graph, organization, website } from "@/lib/schema";
+
+interface Props {
+  title: string;
+  description: string;
+  /** Extra JSON-LD nodes merged into the page @graph. */
+  schema?: Record<string, unknown>[];
+  ogType?: "website" | "article";
+}
+
+const { title, description, schema = [], ogType = "website" } = Astro.props;
+const base = Astro.site ?? Astro.url;
+const canonical = new URL(Astro.url.pathname, base).toString();
+const fullTitle =
+  title === site.name ? `${site.name} · ${site.tagline}` : `${title} · ${site.name}`;
+const ogImage = new URL("/og.png", base).toString();
+const jsonLd = graph(organization(base), website(base), ...schema);
+---
+
+<!doctype html>
+<html lang={site.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta
+      name="robots"
+      content={indexable ? "index, follow, max-image-preview:large" : "noindex, nofollow"}
+    />
+    <meta name="theme-color" content="#343491" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable summary" />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content={site.locale} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+  </head>
+  <body class="min-h-dvh">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-sm focus:bg-white focus:px-4 focus:py-2 focus:text-ink"
+    >
+      Skip to content
+    </a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

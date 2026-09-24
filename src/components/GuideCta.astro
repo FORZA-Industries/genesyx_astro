@@ -1,0 +1,22 @@
+---
+import { paths, type Path } from "@/data/site";
+interface Props {
+  path?: Path;
+}
+const { path } = Astro.props;
+const options = path ? [path] : (Object.keys(paths) as Path[]);
+---
+
+<aside class="mt-16 bg-white px-6 py-10 sm:px-10" aria-labelledby="guide-cta">
+  <p class="eyebrow">Try with intention</p>
+  <h2 id="guide-cta" class="mt-3 font-display text-3xl font-medium">
+    {path ? `Join the ${paths[path].label} first release` : "Which path are you hoping for?"}
+  </h2>
+  <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+    {options.map((p) => (
+      <a href={`/?path=${p}#join`} class="btn-primary">
+        Join the {paths[p].label} list <span aria-hidden="true">→</span>
+      </a>
+    ))}
+  </div>
+</aside>

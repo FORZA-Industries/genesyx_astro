@@ -1,0 +1,8 @@
+---
+interface Props {
+  class?: string;
+}
+const { class: className = "h-4 text-ink" } = Astro.props;
+---
+
+<span role="img" aria-label="Genesyx" class:list={["wordmark", className]}></span>

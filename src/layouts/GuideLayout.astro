@@ -1,0 +1,89 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import GuideCta from "@/components/GuideCta.astro";
+import { site, learnLinks, type Path } from "@/data/site";
+import { article, breadcrumbs } from "@/lib/schema";
+
+interface Props {
+  title: string;
+  description: string;
+  eyebrow: string;
+  summary: string;
+  updated: Date;
+  path?: Path;
+  schema?: Record<string, unknown>[];
+}
+
+const { title, description, eyebrow, summary, updated, path, schema = [] } = Astro.props;
+const base = Astro.site ?? Astro.url;
+const pathname = Astro.url.pathname;
+const related = learnLinks.filter((l) => l.href !== pathname);
+const updatedLabel = updated.toLocaleDateString("en-GB", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  ogType="article"
+  schema={[
+    article({ title, description, updated, path: pathname }, base),
+    breadcrumbs(
+      [
+        { name: site.name, path: "/" },
+        { name: title, path: pathname },
+      ],
+      base,
+    ),
+    ...schema,
+  ]}
+>
+  <article class="wrap max-w-3xl py-14 lg:py-20">
+    <nav aria-label="Breadcrumb" class="text-xs text-muted">
+      <a href="/" class="hover:text-ink">
+        Home
+      </a>{" "}
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{title}</span>
+    </nav>
+    <p class="eyebrow mt-10">{eyebrow}</p>
+    <h1 class="display-md mt-4">{title}</h1>
+    <p class="mt-4 text-xs text-muted">
+      Last updated <time datetime={updated.toISOString()}>{updatedLabel}</time>
+    </p>
+
+    <!-- Answer-first summary: the passage search and AI engines are most likely to quote. -->
+    <p class="mt-8 border-l-2 border-pink pl-5 text-lg leading-relaxed text-ink">{summary}</p>
+
+    <div class="prose-gx mt-10">
+      <slot />
+    </div>
+
+    <p class="mt-12 text-xs leading-relaxed text-muted">
+      {site.disclaimer} This page is general information, not medical advice.
+    </p>
+
+    <GuideCta path={path} />
+
+    <nav aria-labelledby="related" class="mt-16">
+      <h2 id="related" class="eyebrow">
+        Keep reading
+      </h2>
+      <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+        {related.map((l) => (
+          <li>
+            <a
+              href={l.href}
+              class="flex items-center justify-between border-b border-line py-3 text-sm text-ink hover:text-lavender"
+            >
+              {l.label} <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </article>
+</BaseLayout>

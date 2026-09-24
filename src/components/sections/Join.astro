@@ -1,0 +1,131 @@
+---
+import { paths } from "@/data/site";
+---
+
+<section id="join" class="wrap scroll-mt-20">
+  <div
+    style="background: radial-gradient(ellipse at top left, color-mix(in oklab, var(--color-pink) 35%, transparent), transparent 45%), radial-gradient(ellipse at bottom right, color-mix(in oklab, var(--color-aqua) 45%, transparent), transparent 50%), white;"
+    class="grid gap-10 px-6 py-14 sm:px-12 lg:grid-cols-2 lg:items-center lg:px-14 lg:py-16"
+  >
+    <div>
+      <p class="eyebrow">Try with intention</p>
+      <h2 class="display-md mt-4">Which path are you hoping for?</h2>
+      <p class="mt-5 max-w-sm text-sm leading-relaxed">
+        Join the first-release list for your route. We'll email you once, when your programme is
+        ready.
+      </p>
+    </div>
+
+    <form id="waitlist" class="space-y-5" novalidate>
+      <fieldset>
+        <legend class="sr-only">Choose your programme</legend>
+        <div class="border-t border-line">
+          {(Object.keys(paths) as (keyof typeof paths)[]).map((key) => (
+            <label class="flex cursor-pointer items-center gap-5 border-b border-line py-4 text-ink has-checked:bg-white/70">
+              <input type="radio" name="path" value={key} required class="size-4 accent-ink" />
+              <span class="w-8 font-display text-lg font-medium">{paths[key].label}</span>
+              <span class="text-xs">Join the {paths[key].label} first release</span>
+              <span class="ml-auto text-xs text-muted">{paths[key].hope}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <div class="flex flex-col gap-3 sm:flex-row">
+        <label for="waitlist-email" class="sr-only">
+          Email address
+        </label>
+        <input
+          id="waitlist-email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          inputmode="email"
+          required
+          placeholder="Your email address"
+          class="min-h-12 flex-1 rounded-sm border border-line bg-white px-4 text-sm text-ink placeholder:text-muted focus:border-lavender focus:outline-none"
+        />
+        <button type="submit" class="btn-primary min-h-12 disabled:opacity-60">
+          Join the list <span aria-hidden="true">→</span>
+        </button>
+      </div>
+
+      <!-- Honeypot: real users never see or fill this. -->
+      <div class="hidden" aria-hidden="true">
+        <label>
+          Company <input type="text" name="company" tabindex="-1" autocomplete="off" />
+        </label>
+      </div>
+
+      <p class="text-[0.6875rem] leading-relaxed text-muted">
+        By joining you agree to receive launch emails from Genesyx. Unsubscribe any time. See our{" "}
+        <a href="/privacy" class="underline">
+          privacy policy
+        </a>
+        .
+      </p>
+      <p
+        id="waitlist-status"
+        role="status"
+        aria-live="polite"
+        class="text-sm font-medium text-ink"
+      ></p>
+    </form>
+  </div>
+</section>
+
+<script>
+  import { submitWaitlist } from "@/lib/waitlist";
+
+  const form = document.querySelector<HTMLFormElement>("#waitlist");
+  const status = document.querySelector<HTMLElement>("#waitlist-status");
+
+  const selectPath = (path: string | null) => {
+    if (!form || (path !== "xx" && path !== "xy")) return;
+    const radio = form.querySelector<HTMLInputElement>(`input[name="path"][value="${path}"]`);
+    if (radio) radio.checked = true;
+  };
+
+  // Hero / guide CTAs carry data-path so the form arrives preselected.
+  document.addEventListener("click", (e) => {
+    const link = (e.target as HTMLElement).closest<HTMLAnchorElement>("a[data-path]");
+    if (!link) return;
+    selectPath(link.dataset.path ?? null);
+    setTimeout(
+      () =>
+        form?.querySelector<HTMLInputElement>("#waitlist-email")?.focus({ preventScroll: true }),
+      400,
+    );
+  });
+  selectPath(new URLSearchParams(location.search).get("path"));
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!status) return;
+    const data = new FormData(form);
+    if (data.get("company")) return; // bot
+
+    const path = data.get("path");
+    const email = String(data.get("email") ?? "").trim();
+    if (path !== "xx" && path !== "xy") {
+      status.textContent = "Please choose XX or XY.";
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      status.textContent = "Please enter a valid email address.";
+      return;
+    }
+
+    const button = form.querySelector<HTMLButtonElement>("button[type=submit]");
+    if (button) button.disabled = true;
+    status.textContent = "Joining…";
+
+    const result = await submitWaitlist({ email, path });
+    if (button) button.disabled = false;
+    status.textContent = result.message;
+    if (result.ok) {
+      form.reset();
+      window.dispatchEvent(new CustomEvent("gx:waitlist", { detail: { path } }));
+    }
+  });
+</script>

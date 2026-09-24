@@ -1,0 +1,107 @@
+# PLACEHOLDER COPY: review for accuracy and UK advertising (ASA/CAP) compliance before launch.
+# Answers are plain text; keep the first sentence a direct answer (it is what search and AI engines quote).
+
+- id: what-is-shettles
+  order: 1
+  featured: true
+  question: What is the Shettles theory?
+  answer: >-
+    The Shettles theory, developed by Dr Landrum B. Shettles in the 1960s, proposes that X-bearing and
+    Y-bearing sperm behave differently, and that the timing of intercourse around ovulation and the
+    vaginal environment may therefore favour one over the other. It suggests intercourse two to four days
+    before ovulation for a girl, and as close to ovulation as possible for a boy. Later research has not
+    consistently supported the theory, so it should be treated as a method you can follow, not a proven
+    outcome.
+  related: /shettles-method
+
+- id: why-ph-checks
+  order: 2
+  featured: true
+  question: Why does Genesyx include vaginal pH checks?
+  answer: >-
+    Vaginal pH is one of the two variables the Shettles theory focuses on, so Genesyx includes at-home test
+    strips to replace guesswork with a reading. A healthy vaginal pH is typically between 3.8 and 4.5.
+    Genesyx never recommends douching or altering your pH with home remedies, which can cause irritation
+    and infection.
+  related: /vaginal-ph
+
+- id: guarantee
+  order: 3
+  featured: true
+  question: Can Genesyx guarantee a girl or boy?
+  answer: >-
+    No. No natural method, including Genesyx, can guarantee the sex of a baby. Genesyx helps you follow
+    the Shettles approach consistently, with nutrition, testing and timing in one place, but the
+    scientific evidence is mixed and every outcome is welcome.
+  related: /evidence
+
+- id: whats-in-the-box
+  order: 4
+  question: What is included in the 90-day programme?
+  answer: >-
+    Each programme includes three monthly packs of the XX or XY Formula, a route-specific nutrition guide,
+    vaginal pH test strips, ovulation tests, pregnancy tests and access to the Genesyx companion app.
+  related: /#inside
+
+- id: xx-vs-xy
+  order: 5
+  question: What is the difference between the XX and XY programmes?
+  answer: >-
+    Both programmes follow the same 90-day structure. They differ in the nutrition guidance and the
+    intercourse timing guidance, which follow the Shettles recommendations for each route. [PLACEHOLDER:
+    confirm how the XX and XY formulas differ.]
+  related: /xx
+
+- id: why-90-days
+  order: 6
+  question: Why is the programme 90 days long?
+  answer: >-
+    Ninety days gives you around three menstrual cycles to learn your ovulation pattern and build a
+    consistent routine. [PLACEHOLDER: confirm the rationale Genesyx wants to state.]
+
+- id: formula-ingredients
+  order: 7
+  question: What is in the Genesyx formula?
+  answer: >-
+    [PLACEHOLDER: ingredient list and authorised health claims to be confirmed.] The formula is a food
+    supplement and does not influence the sex of a baby. The NHS recommends 400 micrograms of folic acid a
+    day while trying to conceive.
+
+- id: app-included
+  order: 8
+  question: Is the companion app included?
+  answer: >-
+    Yes. The companion app is included with the programme and brings your formula schedule, nutrition
+    guide, vaginal pH readings and cycle timing into one view.
+  related: /#app
+
+- id: who-is-it-for
+  order: 9
+  question: Who is Genesyx for?
+  answer: >-
+    Genesyx is for couples who are trying to conceive naturally and would like to follow the Shettles
+    approach in a structured way. It is not a fertility treatment. If you have been trying to conceive for
+    more than a year, or have a known health condition, please speak to your GP first.
+
+- id: is-it-legal-uk
+  order: 10
+  question: Is sex selection legal in the UK?
+  answer: >-
+    Choosing a baby's sex through IVF or other licensed fertility treatment for non-medical reasons is not
+    permitted in the UK. Genesyx is not a medical or fertility treatment; it helps couples follow
+    lifestyle and timing guidance while conceiving naturally.
+
+- id: release-date
+  order: 11
+  question: When is Genesyx available?
+  answer: >-
+    Genesyx is preparing its first release. Join the XX or XY waitlist to be told first when your
+    programme is available. [PLACEHOLDER: confirm release window and any founding-member offer.]
+
+- id: data-privacy
+  order: 12
+  question: How is my data handled?
+  answer: >-
+    Your waitlist details are used only to contact you about Genesyx and are never sold. You can
+    unsubscribe at any time. See our privacy policy for full details.
+  related: /privacy
