@@ -32,8 +32,8 @@ one are left out of the FAQPage structured data, which must match visible text e
 Copy `.env.example` to `.env`.
 
 - `SITE_URL`: canonical origin. Drives canonical tags, sitemap, JSON-LD and `llms.txt`.
-- `PUBLIC_INDEXABLE`: **leave `false` until copy is final.** When false, every page is `noindex` and
-  `robots.txt` disallows all crawlers. Set to `true` on launch to allow Google and the named AI crawlers.
+- `PUBLIC_INDEXABLE`: crawling is **on by default**. Set to `false` (e.g. on a staging project) to make
+  every page `noindex` and have `robots.txt` disallow all crawlers.
 - `PUBLIC_SUPABASE_URL` / `PUBLIC_SUPABASE_ANON_KEY`: without these, the form runs in preview mode
   and stores nothing.
 
@@ -59,5 +59,5 @@ headers there.
 - [ ] Claims reviewed against the GB nutrition and health claims register / ASA CAP Code
 - [ ] Named advisor and references on `/evidence`
 - [ ] Real privacy policy
-- [ ] Final domain in `SITE_URL`, `PUBLIC_INDEXABLE=true`
+- [ ] Final domain in `SITE_URL` (custom domain), then resubmit the sitemap
 - [ ] Submit sitemap in Google Search Console

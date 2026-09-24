@@ -13,6 +13,7 @@ interface Props {
   updated: Date;
   path?: Path;
   type?: "article" | "page";
+  noindex?: boolean;
   schema?: Record<string, unknown>[];
 }
 
@@ -24,6 +25,7 @@ const {
   updated,
   path,
   type = "article",
+  noindex = false,
   schema = [],
 } = Astro.props;
 const base = Astro.site ?? Astro.url;
@@ -40,6 +42,7 @@ const updatedLabel = updated.toLocaleDateString("en-GB", {
   title={title}
   description={description}
   ogType={type === "article" ? "article" : "website"}
+  noindex={noindex}
   schema={[
     (type === "article" ? article : webPage)({ title, description, updated, path: pathname }, base),
     breadcrumbs(

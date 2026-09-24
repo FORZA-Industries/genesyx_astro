@@ -8,7 +8,7 @@ updated: 2026-09-24
 reviewed: false
 ---
 
-<!-- PLACEHOLDER COPY: review for accuracy and ASA/CAP compliance before launch. -->
+<!-- TODO(genesyx): how the XX and XY nutrition guides differ; named reviewer; ASA/CAP review. -->
 
 ## The honest starting point
 
@@ -40,7 +40,7 @@ use home remedies** to change your pH; they can cause irritation and infection.
 ## Diet
 
 Some small studies have linked diet around conception with a baby's sex, but the findings have not been
-reliably replicated. [PLACEHOLDER: confirm how the XX and XY nutrition guides differ.]
+reliably replicated.
 
 ## What the research says
 
