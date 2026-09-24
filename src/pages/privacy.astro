@@ -1,12 +1,12 @@
 ---
 import GuideLayout from "@/layouts/GuideLayout.astro";
-import { site } from "@/data/site";
 ---
 
 <GuideLayout
   title="Privacy policy"
   description="How Genesyx collects and uses your information."
   eyebrow="Legal"
+  type="page"
   summary="PLACEHOLDER: this privacy policy must be written or reviewed by a qualified adviser before launch."
   updated={new Date("2026-09-24")}
 >
@@ -21,7 +21,7 @@ import { site } from "@/data/site";
   <p>[PLACEHOLDER: Supabase region, processors, retention period.]</p>
   <h2>Your rights</h2>
   <p>
-    Under UK GDPR you can ask to access, correct or delete your data at any time by emailing{" "}
-    <a href={`mailto:${site.email}`}>{site.email}</a>.
+    You can ask to access, correct or delete your data at any time. [PLACEHOLDER: contact email and
+    applicable data-protection law.]
   </p>
 </GuideLayout>

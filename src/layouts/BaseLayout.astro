@@ -4,6 +4,7 @@ import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import { site, indexable } from "@/data/site";
 import { graph, organization, website } from "@/lib/schema";
+import { cleanPath } from "@/lib/url";
 
 interface Props {
   title: string;
@@ -11,11 +12,15 @@ interface Props {
   /** Extra JSON-LD nodes merged into the page @graph. */
   schema?: Record<string, unknown>[];
   ogType?: "website" | "article";
+  /** Force noindex regardless of the site-wide PUBLIC_INDEXABLE switch (e.g. 404). */
+  noindex?: boolean;
 }
 
-const { title, description, schema = [], ogType = "website" } = Astro.props;
+const { title, description, schema = [], ogType = "website", noindex = false } = Astro.props;
+const robots =
+  indexable && !noindex ? "index, follow, max-image-preview:large" : "noindex, nofollow";
 const base = Astro.site ?? Astro.url;
-const canonical = new URL(Astro.url.pathname, base).toString();
+const canonical = new URL(cleanPath(Astro.url.pathname), base).toString();
 const fullTitle =
   title === site.name ? `${site.name} · ${site.tagline}` : `${title} · ${site.name}`;
 const ogImage = new URL("/og.png", base).toString();
@@ -30,15 +35,11 @@ const jsonLd = graph(organization(base), website(base), ...schema);
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <meta
-      name="robots"
-      content={indexable ? "index, follow, max-image-preview:large" : "noindex, nofollow"}
-    />
+    <meta name="robots" content={robots} />
     <meta name="theme-color" content="#343491" />
     <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable summary" />
 
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={site.name} />

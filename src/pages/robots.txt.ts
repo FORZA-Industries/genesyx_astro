@@ -1,33 +1,13 @@
 import type { APIRoute } from "astro";
 import { indexable } from "@/data/site";
 
-// AI crawlers are named explicitly so the policy is obvious and easy to change per bot.
-const aiBots = [
-  "GPTBot",
-  "OAI-SearchBot",
-  "ChatGPT-User",
-  "ClaudeBot",
-  "Claude-SearchBot",
-  "Claude-User",
-  "PerplexityBot",
-  "Perplexity-User",
-  "Google-Extended",
-  "Applebot-Extended",
-  "CCBot",
-];
-
+// Launch policy: all crawlers (search engines, AI search bots and AI training bots) may crawl.
+// To treat AI training crawlers differently from search crawlers, add explicit groups here, e.g.
+// "User-agent: GPTBot" / "Disallow: /". That is a business decision; don't change it silently.
 export const GET: APIRoute = ({ site, url }) => {
   const sitemap = new URL("/sitemap-index.xml", site ?? url).toString();
   const body = indexable
-    ? [
-        "User-agent: *",
-        "Allow: /",
-        "",
-        ...aiBots.map((b) => `User-agent: ${b}`),
-        "Allow: /",
-        "",
-        `Sitemap: ${sitemap}`,
-      ]
+    ? ["User-agent: *", "Allow: /", "", `Sitemap: ${sitemap}`]
     : [
         "# Pre-launch: set PUBLIC_INDEXABLE=true to open the site to crawlers.",
         "User-agent: *",
