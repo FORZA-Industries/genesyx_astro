@@ -8,7 +8,7 @@ updated: 2026-09-24
 reviewed: false
 ---
 
-<!-- PLACEHOLDER COPY: review for accuracy and ASA/CAP compliance before launch. -->
+<!-- TODO(genesyx): confirm how the programme uses pH readings; ASA/CAP review. -->
 
 ## What is vaginal pH?
 
@@ -23,8 +23,7 @@ environment may favour Y-bearing sperm. This has not been consistently demonstra
 ## How Genesyx uses pH readings
 
 Your programme includes at-home vaginal pH test strips. You log each reading in the companion app, so you
-can see your readings alongside your cycle timing and nutrition. [PLACEHOLDER: confirm exactly how the
-programme uses pH readings.]
+can see your readings alongside your cycle timing and nutrition.
 
 ## What we will never recommend
 

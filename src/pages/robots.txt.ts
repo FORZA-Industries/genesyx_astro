@@ -9,7 +9,7 @@ export const GET: APIRoute = ({ site, url }) => {
   const body = indexable
     ? ["User-agent: *", "Allow: /", "", `Sitemap: ${sitemap}`]
     : [
-        "# Pre-launch: set PUBLIC_INDEXABLE=true to open the site to crawlers.",
+        "# Crawling disabled for this build (PUBLIC_INDEXABLE=false).",
         "User-agent: *",
         "Disallow: /",
       ];

@@ -24,6 +24,8 @@ export default defineConfig({
   build: { format: "file" },
   integrations: [
     sitemap({
+      // Keep noindex pages out of the sitemap.
+      filter: (page) => !["/privacy", "/404"].includes(new URL(page).pathname),
       serialize(item) {
         const updated = lastmod.get(new URL(item.url).pathname);
         if (updated) item.lastmod = new Date(updated).toISOString();

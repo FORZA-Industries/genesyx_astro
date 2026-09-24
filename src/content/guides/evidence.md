@@ -8,7 +8,7 @@ updated: 2026-09-24
 reviewed: false
 ---
 
-<!-- PLACEHOLDER COPY: to be completed with Genesyx's scientific advisor and full references. -->
+<!-- TODO(genesyx): further references and a named advisor with credentials (highest-impact trust signal). -->
 
 ## What we claim, and what we don't
 
@@ -23,9 +23,4 @@ testing and timing) into one clear programme.
   the probability of conception, survival of the pregnancy, and sex of the baby.* New England Journal of
   Medicine, 333(23), 1517–1521. Found no association between the timing of intercourse and the sex of the
   baby.
-- [PLACEHOLDER: further references to be supplied by Genesyx's advisor.]
 
-## Our advisors
-
-[PLACEHOLDER: named clinical or nutrition advisor with credentials. This is one of the strongest trust
-signals for both readers and search engines on a health topic.]
