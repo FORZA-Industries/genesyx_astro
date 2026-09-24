@@ -13,16 +13,16 @@ npm run format
 
 ## Where things live
 
-| What | Where |
-| --- | --- |
-| Brand facts (name, description, release window, disclaimer) | `src/data/site.ts` |
-| FAQ (landing accordion, `/faq`, FAQPage JSON-LD, llms-full.txt) | `src/content/faq.yaml` |
-| Guides (`/shettles-method`, `/vaginal-ph`, `/xx`, `/xy`, `/evidence`) | `src/content/guides/*.md` |
-| Landing sections | `src/components/sections/*` |
-| JSON-LD builders | `src/lib/schema.ts` |
-| `llms.txt` / `llms-full.txt` generator | `src/lib/llms.ts` |
-| Waitlist client (Supabase REST) | `src/lib/waitlist.ts` |
-| Waitlist table + RLS | `supabase/migrations/*.sql` |
+| What                                                                  | Where                       |
+| --------------------------------------------------------------------- | --------------------------- |
+| Brand facts (name, description, release window, disclaimer)           | `src/data/site.ts`          |
+| FAQ (landing accordion, `/faq`, FAQPage JSON-LD, llms-full.txt)       | `src/content/faq.yaml`      |
+| Guides (`/shettles-method`, `/vaginal-ph`, `/xx`, `/xy`, `/evidence`) | `src/content/guides/*.md`   |
+| Landing sections                                                      | `src/components/sections/*` |
+| JSON-LD builders                                                      | `src/lib/schema.ts`         |
+| `llms.txt` / `llms-full.txt` generator                                | `src/lib/llms.ts`           |
+| Waitlist client (Supabase REST)                                       | `src/lib/waitlist.ts`       |
+| Waitlist table + RLS                                                  | `supabase/migrations/*.sql` |
 
 Content is written once and reused by the page, the structured data and `llms.txt`, so they can't drift.
 `[PLACEHOLDER: …]` markers are visible on the page (so they get reviewed) but stripped from machine
