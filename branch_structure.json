@@ -1,0 +1,33 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "custom-domain-genesyx-life",
+    "feat/search-ai-visibility",
+    "geo-checklist-gaps",
+    "hero-image",
+    "hero-image-v2",
+    "hero-image-v3",
+    "main",
+    "origin"
+  ],
+  "parent": {
+    "custom-domain-genesyx-life": "main",
+    "feat/search-ai-visibility": "main",
+    "geo-checklist-gaps": "main",
+    "hero-image": "main",
+    "hero-image-v2": "hero-image",
+    "hero-image-v3": "hero-image",
+    "main": null,
+    "origin": "main"
+  },
+  "order": [
+    "main",
+    "custom-domain-genesyx-life",
+    "feat/search-ai-visibility",
+    "geo-checklist-gaps",
+    "hero-image",
+    "origin",
+    "hero-image-v2",
+    "hero-image-v3"
+  ]
+}
