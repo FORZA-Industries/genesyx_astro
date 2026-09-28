@@ -4,8 +4,8 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 
-// Canonical origin. Override with SITE_URL when a custom domain is added; no trailing slash.
-const site = process.env.SITE_URL ?? "https://genesyx.pages.dev";
+// Canonical origin (no trailing slash). genesyx.life and genesyx.pages.dev redirect here.
+const site = process.env.SITE_URL ?? "https://www.genesyx.life";
 
 // Content collections aren't available in config, so read each guide's `updated` frontmatter directly.
 const guidesDir = new URL("./src/content/guides/", import.meta.url);

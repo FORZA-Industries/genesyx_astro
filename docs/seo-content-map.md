@@ -20,7 +20,8 @@ still needs.
 ## Business identity (keep consistent everywhere)
 
 Confirmed: name **Genesyx**, tagline **Try with intention.**, a 90-day XX / XY preconception programme
-inspired by the Shettles theory, pre-launch waitlist, canonical address **https://genesyx.pages.dev**.
+inspired by the Shettles theory, pre-launch waitlist, canonical address **https://www.genesyx.life** (`genesyx.life` and `genesyx.pages.dev` should 301
+to it).
 
 Not yet confirmed, so deliberately absent from the site, structured data and `llms.txt`: legal entity,
 contact email, address or service area, release date, prices, founders, authors and advisors, social profiles.
