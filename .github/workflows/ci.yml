@@ -28,10 +28,10 @@ jobs:
           test ! -e dist/llms-full.txt
           grep -q "^# Genesyx" dist/llms.txt
           grep -q "^Allow: /" dist/robots.txt
-          grep -q "^Sitemap: https://genesyx.pages.dev/sitemap-index.xml" dist/robots.txt
+          grep -q "^Sitemap: https://www.genesyx.life/sitemap-index.xml" dist/robots.txt
           ! grep -q "privacy" dist/sitemap-0.xml
           ! grep -rq "\[PLACEHOLDER" dist --include=*.html
           ! grep -q "PLACEHOLDER" dist/llms.txt
           # No stray canonical domain, and the 404 page is never indexable.
-          ! grep -rq "genesyx\.com" dist --include=*.html --include=*.xml --include=*.txt
+          ! grep -rqE "genesyx\.com|genesyx\.pages\.dev" dist --include=*.html --include=*.xml --include=*.txt
           grep -q 'name="robots" content="noindex' dist/404.html
