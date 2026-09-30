@@ -30,6 +30,7 @@ export const nav = [
   { href: "/#why", label: "Why Genesyx" },
   { href: "/#inside", label: "What's inside" },
   { href: "/#app", label: "The app" },
+  { href: "/learn", label: "Learn" },
   { href: "/#questions", label: "Questions" },
 ] as const;
 

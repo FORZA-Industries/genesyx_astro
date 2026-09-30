@@ -7,6 +7,8 @@ order: 1
 published: 2026-09-24
 updated: 2026-09-30
 reviewed: false
+image: ../../assets/images/guides/shettles-method.jpg
+imageAlt: "A couple walking hand in hand along a tree-lined autumn path, seen from behind"
 ---
 
 <!-- TODO(genesyx): named reviewer; ASA/CAP review. -->

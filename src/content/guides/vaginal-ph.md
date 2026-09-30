@@ -7,6 +7,8 @@ order: 2
 published: 2026-09-24
 updated: 2026-09-30
 reviewed: false
+image: ../../assets/images/guides/vaginal-ph.jpg
+imageAlt: "A smiling woman lying in bed, holding a phone that shows the Genesyx app's Insights screen"
 ---
 
 <!-- TODO(genesyx): confirm how the XX / XY programme uses pH readings (what the app shows per route); ASA/CAP review. -->

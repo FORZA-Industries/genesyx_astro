@@ -7,6 +7,8 @@ order: 6
 published: 2026-09-24
 updated: 2026-09-30
 reviewed: false
+image: ../../assets/images/guides/how-to-conceive-a-girl-or-boy.jpg
+imageAlt: "A pink cup and an aqua cup side by side on a linen tablecloth in golden light, with a sprig of dried flowers between them"
 ---
 
 <!-- TODO(genesyx): how the XX and XY nutrition guides differ (needs the approved guides); named reviewer; ASA/CAP review. -->

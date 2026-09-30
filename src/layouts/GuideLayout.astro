@@ -1,4 +1,6 @@
 ---
+import type { ImageMetadata } from "astro";
+import { Picture, getImage } from "astro:assets";
 import BaseLayout from "./BaseLayout.astro";
 import GuideCta from "@/components/GuideCta.astro";
 import { site, learnLinks, type Path } from "@/data/site";
@@ -16,6 +18,8 @@ interface Props {
   type?: "article" | "page";
   noindex?: boolean;
   schema?: Record<string, unknown>[];
+  image?: ImageMetadata;
+  imageAlt?: string;
 }
 
 const {
@@ -29,10 +33,18 @@ const {
   type = "article",
   noindex = false,
   schema = [],
+  image,
+  imageAlt = "",
 } = Astro.props;
 const base = Astro.site ?? Astro.url;
 const pathname = cleanPath(Astro.url.pathname);
 const related = learnLinks.filter((l) => l.href !== pathname);
+// 1200x630 crop for social cards; its absolute URL also feeds the Article/WebPage schema.
+const og = image
+  ? await getImage({ src: image, width: 1200, height: 630, fit: "cover", format: "jpg" })
+  : undefined;
+const ogImage = og && { src: og.src, width: 1200, height: 630 };
+const imageUrl = og && new URL(og.src, base).toString();
 const updatedLabel = updated.toLocaleDateString("en-GB", {
   day: "numeric",
   month: "long",
@@ -45,10 +57,11 @@ const updatedLabel = updated.toLocaleDateString("en-GB", {
   description={description}
   ogType={type === "article" ? "article" : "website"}
   noindex={noindex}
+  ogImage={ogImage}
   schema={[
     type === "article"
-      ? article({ title, description, updated, published, path: pathname }, base)
-      : webPage({ title, description, updated, path: pathname }, base),
+      ? article({ title, description, updated, published, path: pathname, image: imageUrl }, base)
+      : webPage({ title, description, updated, path: pathname, image: imageUrl }, base),
     breadcrumbs(
       [
         { name: site.name, path: "/" },
@@ -75,6 +88,19 @@ const updatedLabel = updated.toLocaleDateString("en-GB", {
 
     <!-- Answer-first summary: the passage search and AI engines are most likely to quote. -->
     <p class="mt-8 border-l-2 border-pink pl-5 text-lg leading-relaxed text-ink">{summary}</p>
+
+    {image && (
+      <Picture
+        src={image}
+        alt={imageAlt}
+        formats={["avif", "webp"]}
+        widths={[480, 800, 1200, 1600]}
+        sizes="(min-width: 768px) 720px, 100vw"
+        loading="eager"
+        fetchpriority="high"
+        class="mt-10 aspect-[16/9] w-full rounded-card object-cover"
+      />
+    )}
 
     <div class="prose-gx mt-10">
       <slot />

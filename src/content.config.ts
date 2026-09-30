@@ -16,23 +16,27 @@ const faq = defineCollection({
 
 const guides = defineCollection({
   loader: glob({ pattern: "*.md", base: "src/content/guides" }),
-  schema: z.object({
-    title: z.string(),
-    // Used for <meta name="description"> and llms.txt link notes.
-    description: z.string(),
-    eyebrow: z.string(),
-    // One-paragraph answer shown at the top of the page for readers and AI engines.
-    summary: z.string(),
-    path: z.enum(["xx", "xy"]).optional(),
-    // "page" for programme pages (WebPage schema); "article" for editorial guides.
-    type: z.enum(["article", "page"]).default("article"),
-    order: z.number(),
-    // First publication date (Article datePublished). `updated` changes on every real revision.
-    published: z.coerce.date().optional(),
-    updated: z.coerce.date(),
-    // Flip to true once copy has been reviewed for accuracy and compliant claims.
-    reviewed: z.boolean().default(false),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      // Used for <meta name="description"> and llms.txt link notes.
+      description: z.string(),
+      eyebrow: z.string(),
+      // One-paragraph answer shown at the top of the page for readers and AI engines.
+      summary: z.string(),
+      path: z.enum(["xx", "xy"]).optional(),
+      // "page" for programme pages (WebPage schema); "article" for editorial guides.
+      type: z.enum(["article", "page"]).default("article"),
+      order: z.number(),
+      // First publication date (Article datePublished). `updated` changes on every real revision.
+      published: z.coerce.date().optional(),
+      updated: z.coerce.date(),
+      // Flip to true once copy has been reviewed for accuracy and compliant claims.
+      reviewed: z.boolean().default(false),
+      // Lead image (src/assets/images/guides/*) and its alt text; both or neither.
+      image: image().optional(),
+      imageAlt: z.string().optional(),
+    }),
 });
 
 export const collections = { faq, guides };

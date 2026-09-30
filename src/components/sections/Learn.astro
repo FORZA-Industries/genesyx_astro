@@ -1,0 +1,33 @@
+---
+import { getCollection } from "astro:content";
+import GuideCard from "@/components/GuideCard.astro";
+
+// Three editorial guides with images, in the collection's own order.
+const featured = (await getCollection("guides", (g) => g.data.type === "article" && g.data.image))
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
+---
+
+<section id="learn" class="wrap pb-24 lg:pb-32">
+  <div class="flex flex-wrap items-end justify-between gap-6">
+    <div>
+      <p class="eyebrow">Learn</p>
+      <h2 class="display-md mt-4">
+        Read the science <span class="accent">before you start.</span>
+      </h2>
+    </div>
+    <a
+      href="/learn"
+      class="text-sm font-medium text-ink underline decoration-pink decoration-2 underline-offset-4"
+    >
+      See all guides →
+    </a>
+  </div>
+  <ul class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {featured.map((g) => (
+      <li>
+        <GuideCard guide={g} />
+      </li>
+    ))}
+  </ul>
+</section>

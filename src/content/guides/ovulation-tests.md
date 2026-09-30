@@ -7,6 +7,8 @@ order: 8
 published: 2026-09-24
 updated: 2026-09-30
 reviewed: false
+image: ../../assets/images/guides/ovulation-tests.jpg
+imageAlt: "A phone showing the Genesyx app's Insights screen on an open notebook, beside three ovulation test sticks and a cup of tea"
 ---
 
 <!-- TODO(genesyx): which brand/sensitivity of LH test is in the kit and its own instructions; named reviewer; ASA/CAP review. -->

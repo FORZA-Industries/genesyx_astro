@@ -7,6 +7,8 @@ order: 5
 published: 2026-09-24
 updated: 2026-09-30
 reviewed: false
+image: ../../assets/images/guides/evidence.jpg
+imageAlt: "Stacks of printed research studies with sticky tabs, an open book with a highlighter and a mug of coffee on a wooden desk in warm evening light"
 ---
 
 <!-- TODO(genesyx): named advisor with credentials and a "reviewed by" line (highest-impact trust signal); ASA/CAP review. -->

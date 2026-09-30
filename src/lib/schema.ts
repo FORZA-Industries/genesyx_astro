@@ -73,7 +73,14 @@ export function breadcrumbs(items: { name: string; path: string }[], base: URL |
 }
 
 export function article(
-  data: { title: string; description: string; updated: Date; published?: Date; path: string },
+  data: {
+    title: string;
+    description: string;
+    updated: Date;
+    published?: Date;
+    path: string;
+    image?: string;
+  },
   base: URL | string,
 ): Thing {
   return {
@@ -82,7 +89,7 @@ export function article(
     description: data.description,
     ...(data.published ? { datePublished: data.published.toISOString() } : {}),
     dateModified: data.updated.toISOString(),
-    image: abs("/og.png", base),
+    image: data.image ?? abs("/og.png", base),
     inLanguage: site.lang,
     mainEntityOfPage: abs(data.path, base),
     isPartOf: { "@id": abs("/#website", base) },
@@ -92,7 +99,7 @@ export function article(
 }
 
 export function webPage(
-  data: { title: string; description: string; updated: Date; path: string },
+  data: { title: string; description: string; updated: Date; path: string; image?: string },
   base: URL | string,
 ): Thing {
   return {
@@ -104,6 +111,7 @@ export function webPage(
     dateModified: data.updated.toISOString(),
     inLanguage: site.lang,
     isPartOf: { "@id": abs("/#website", base) },
+    ...(data.image ? { primaryImageOfPage: data.image } : {}),
   };
 }
 
