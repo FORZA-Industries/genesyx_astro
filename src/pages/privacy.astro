@@ -1,5 +1,6 @@
 ---
 import GuideLayout from "@/layouts/GuideLayout.astro";
+import { site } from "@/data/site";
 ---
 
 <GuideLayout
@@ -13,9 +14,9 @@ import GuideLayout from "@/layouts/GuideLayout.astro";
 >
   <h2>Who we are</h2>
   <p>
-    Genesyx Ltd (company number 16913651), Unit 8 Axiom, Orbital Park, Ashford TN24 0AA, United
-    Kingdom, is the data controller for information collected on this website. You can contact us at
-    <a href="mailto:info@genesyx.co.uk">info@genesyx.co.uk</a>.
+    Genesyx is operated by {site.legalName}, a UK company, which is the data controller for
+    information collected on this website. You can contact us at
+    <a href={`mailto:${site.email}`}>{site.email}</a>.
   </p>
 
   <h2>What we collect</h2>

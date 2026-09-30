@@ -36,6 +36,16 @@ const year = new Date().getFullYear();
             The programme
           </a>
         </li>
+        <li>
+          <a href={site.links.appStore} rel="noopener" class="hover:text-lavender">
+            Genesyx for iPhone
+          </a>
+        </li>
+        <li>
+          <a href={site.links.shop} rel="noopener" class="hover:text-lavender">
+            Genesyx shop
+          </a>
+        </li>
         {companyLinks.map((l) => (
           <li>
             <a href={l.href} class="hover:text-lavender">
@@ -43,11 +53,16 @@ const year = new Date().getFullYear();
             </a>
           </li>
         ))}
+        <li>
+          <a href="/privacy" class="hover:text-lavender">
+            Privacy
+          </a>
+        </li>
       </ul>
     </nav>
   </div>
   <div class="wrap border-t border-line py-6 text-xs text-muted">
-    © {year} {site.name}. All rights reserved. Genesyx is not a medical device or fertility
-    treatment.
+    © {year} {site.name}, operated by {site.legalName}. All rights reserved. Genesyx is not a
+    medical device or fertility treatment.
   </div>
 </footer>

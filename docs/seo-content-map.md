@@ -22,8 +22,7 @@ still needs.
 ## Business identity (keep consistent everywhere)
 
 Confirmed: name **Genesyx**, tagline **Try with intention.**, a 90-day XX / XY preconception programme
-inspired by the Shettles theory, pre-launch waitlist, canonical address **https://www.genesyx.life** (`genesyx.life` and `genesyx.pages.dev` should 301
-to it).
+inspired by the Shettles theory, pre-launch waitlist, canonical address **https://www.genesyx.life** (`genesyx.life` 308-redirects to it; hosted on Vercel).
 
 Official profiles in `sameAs` (Organization JSON-LD): genesyx.co.uk, App Store, Google Play.
 

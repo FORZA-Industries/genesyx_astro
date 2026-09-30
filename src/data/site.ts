@@ -7,26 +7,21 @@ export const site = {
   description:
     "Genesyx is a 90-day XX / XY preconception programme inspired by the Shettles theory, combining a route-specific supplement formula, nutrition guide, at-home vaginal pH and ovulation tests, and a companion app.",
   shortDescription: "A considered 90-day preconception programme inspired by the Shettles theory.",
+  // Home page <title> suffix: says what Genesyx is, so brand searches can tell it apart.
+  titleDescriptor: "XX / XY preconception programme and companion app",
+  // Confirmed by the business (Sept 2026): the operating company and the brand's other properties.
+  legalName: "SF MEDIA & PR LTD",
+  links: {
+    appStore: "https://apps.apple.com/app/genesyx/id6787682466",
+    shop: "https://genesyx.co.uk/",
+  },
+  // Contact email used for the Genesyx app and genesyx.co.uk. Confirm it also applies to this site.
+  email: "info@genesyx.co.uk",
   locale: "en_GB",
   lang: "en-GB",
-  // Company and contact details, as used for the Genesyx app (confirm they also apply to this site).
-  legalName: "Genesyx Ltd",
-  companyNumber: "16913651",
-  email: "info@genesyx.co.uk",
-  // Not yet confirmed: service area, release date, prices, founders, advisors.
-  // Official Genesyx profiles. Linking them in Organization JSON-LD tells search and AI engines these
-  // are one brand, which helps separate Genesyx from unrelated companies with similar names.
-  sameAs: [
-    "https://genesyx.co.uk/",
-    "https://apps.apple.com/gb/app/genesyx/id6787682466",
-    "https://play.google.com/store/apps/details?id=com.genesyx.app",
-  ] as string[],
-  // The Genesyx companion app (free on iOS and Android).
-  app: {
-    name: "Genesyx",
-    appStore: "https://apps.apple.com/gb/app/genesyx/id6787682466",
-    googlePlay: "https://play.google.com/store/apps/details?id=com.genesyx.app",
-  },
+  // Not yet confirmed: company number, address, service area, release date.
+  // Add them here (and they flow into the footer, JSON-LD and llms.txt) once supplied.
+  sameAs: ["https://genesyx.co.uk/", "https://apps.apple.com/app/genesyx/id6787682466"],
   disclaimer:
     "Evidence for the Shettles theory is mixed. Genesyx helps you follow the theory consistently; no outcome is guaranteed.",
 } as const;
@@ -52,7 +47,6 @@ export const learnLinks = [
 export const companyLinks = [
   { href: "/about", label: "About Genesyx" },
   { href: "/contact", label: "Contact" },
-  { href: "/privacy", label: "Privacy" },
 ] as const;
 
 export type Path = "xx" | "xy";
