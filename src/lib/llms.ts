@@ -36,5 +36,12 @@ export async function buildLlms(base: URL): Promise<string> {
     "",
     `- [Frequently asked questions](${url("/faq")}): What Genesyx is, what it can and cannot promise, and how the programme works.`,
     "",
+    "## Official Genesyx properties",
+    "",
+    `- [Genesyx website](${url("/")}): This site, the programme and guides.`,
+    `- [Genesyx for iPhone](${site.links.appStore}): The Genesyx companion app on the App Store.`,
+    `- [Genesyx shop](${site.links.shop}): The Genesyx online shop.`,
+    `- Genesyx is operated by ${site.legalName}.`,
+    "",
   ].join("\n");
 }
