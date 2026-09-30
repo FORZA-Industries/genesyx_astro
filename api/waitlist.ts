@@ -18,7 +18,8 @@ const allowedOrigin = (origin: string | null) => {
     return (
       host === "www.genesyx.life" ||
       host === "genesyx.life" ||
-      host.endsWith(".vercel.app") ||
+      // Vercel previews of this project only (e.g. genesyx-astro-git-<branch>-<team>.vercel.app).
+      (host.startsWith("genesyx-astro") && host.endsWith(".vercel.app")) ||
       host === "localhost"
     );
   } catch {
