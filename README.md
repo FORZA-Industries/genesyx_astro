@@ -20,8 +20,9 @@ npm run format
 | Landing sections                                                      | `src/components/sections/*` |
 | JSON-LD builders                                                      | `src/lib/schema.ts`         |
 | `llms.txt` generator                                                  | `src/lib/llms.ts`           |
-| Waitlist client (Supabase REST)                                       | `src/lib/waitlist.ts`       |
-| Waitlist table + RLS                                                  | `supabase/migrations/*.sql` |
+| Waitlist form client                                                  | `src/lib/waitlist.ts`       |
+| Waitlist API (Vercel Function → Resend contacts + XX/XY segments)     | `api/waitlist.ts`           |
+| Legacy Supabase waitlist table (unused since the move to Resend)      | `supabase/migrations/*.sql` |
 
 Content is written once and reused by the page, the structured data and `llms.txt`, so they can't drift.
 `[PLACEHOLDER: …]` markers are visible on the page (so they get reviewed). FAQ answers that still contain
@@ -34,14 +35,15 @@ Copy `.env.example` to `.env`.
 - `SITE_URL`: canonical origin. Drives canonical tags, sitemap, JSON-LD and `llms.txt`.
 - `PUBLIC_INDEXABLE`: crawling is **on by default**. Set to `false` (e.g. on a staging project) to make
   every page `noindex` and have `robots.txt` disallow all crawlers.
-- `PUBLIC_SUPABASE_URL` / `PUBLIC_SUPABASE_ANON_KEY`: without these, the form runs in preview mode
-  and stores nothing.
+- `RESEND_API_KEY`, `RESEND_SEGMENT_XX`, `RESEND_SEGMENT_XY`: used only by `api/waitlist.ts` on Vercel.
+  Without them the form says sign-ups aren't open yet (it never fakes success).
 
-## Supabase
+## Waitlist
 
-Apply `supabase/migrations/20260924000000_create_waitlist.sql`. The anon/publishable key can only
-`INSERT` into `public.waitlist`; nobody can read the list with it. Duplicate sign-ups (same email +
-route) return 409, which the form treats as success.
+The form posts to `/api/waitlist`, a Vercel Function that creates a Resend contact in the XX or XY
+segment (or adds an existing contact to it). Only same-site origins are accepted, and a honeypot
+field drops bots. The launch email is sent later as a Resend broadcast to each segment. Cloudflare
+Pages builds don't run the function, so the form there reports that sign-ups aren't open.
 
 ## Deploying
 
