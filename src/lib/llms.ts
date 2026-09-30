@@ -30,6 +30,7 @@ export async function buildLlms(base: URL): Promise<string> {
     "",
     "## Guides",
     "",
+    `- [Learn: all guides](${url("/learn")}): Index of every Genesyx guide and programme page.`,
     ...articles.map(link),
     "",
     "## FAQ",
