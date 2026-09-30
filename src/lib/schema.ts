@@ -66,7 +66,7 @@ export function breadcrumbs(items: { name: string; path: string }[], base: URL |
 }
 
 export function article(
-  data: { title: string; description: string; updated: Date; path: string },
+  data: { title: string; description: string; updated: Date; path: string; image?: string },
   base: URL | string,
 ): Thing {
   return {
@@ -76,13 +76,14 @@ export function article(
     dateModified: data.updated.toISOString(),
     inLanguage: site.lang,
     mainEntityOfPage: abs(data.path, base),
+    ...(data.image ? { image: data.image } : {}),
     author: { "@id": abs("/#organization", base) },
     publisher: { "@id": abs("/#organization", base) },
   };
 }
 
 export function webPage(
-  data: { title: string; description: string; updated: Date; path: string },
+  data: { title: string; description: string; updated: Date; path: string; image?: string },
   base: URL | string,
 ): Thing {
   return {
@@ -94,6 +95,7 @@ export function webPage(
     dateModified: data.updated.toISOString(),
     inLanguage: site.lang,
     isPartOf: { "@id": abs("/#website", base) },
+    ...(data.image ? { primaryImageOfPage: data.image } : {}),
   };
 }
 
