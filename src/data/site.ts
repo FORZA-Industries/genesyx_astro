@@ -15,7 +15,7 @@ export const site = {
     appStore: "https://apps.apple.com/app/genesyx/id6787682466",
     shop: "https://genesyx.co.uk/",
   },
-  // Contact email used for the Genesyx app and genesyx.co.uk. Confirm it also applies to this site.
+  // Contact email for the site, app and genesyx.co.uk (confirmed by the business, Sept 2026).
   email: "info@genesyx.co.uk",
   locale: "en_GB",
   lang: "en-GB",
