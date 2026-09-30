@@ -11,7 +11,13 @@ export const site = {
   lang: "en-GB",
   // Not yet confirmed: legal entity, contact email, address, service area, release date.
   // Add them here (and they flow into the footer, JSON-LD and llms.txt) once supplied.
-  sameAs: [] as string[],
+  // Official Genesyx profiles. Linking them in Organization JSON-LD tells search and AI engines these
+  // are one brand, which helps separate Genesyx from unrelated companies with similar names.
+  sameAs: [
+    "https://genesyx.co.uk/",
+    "https://apps.apple.com/gb/app/genesyx/id6787682466",
+    "https://play.google.com/store/apps/details?id=com.genesyx.app",
+  ] as string[],
   disclaimer:
     "Evidence for the Shettles theory is mixed. Genesyx helps you follow the theory consistently; no outcome is guaranteed.",
 } as const;
