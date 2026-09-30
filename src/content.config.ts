@@ -28,6 +28,8 @@ const guides = defineCollection({
       // "page" for programme pages (WebPage schema); "article" for editorial guides.
       type: z.enum(["article", "page"]).default("article"),
       order: z.number(),
+      // First publication date (Article datePublished). `updated` changes on every real revision.
+      published: z.coerce.date().optional(),
       updated: z.coerce.date(),
       // Flip to true once copy has been reviewed for accuracy and compliant claims.
       reviewed: z.boolean().default(false),

@@ -1,6 +1,6 @@
 ---
 import Logo from "./Logo.astro";
-import { site, learnLinks } from "@/data/site";
+import { site, learnLinks, companyLinks } from "@/data/site";
 const year = new Date().getFullYear();
 ---
 
@@ -46,6 +46,13 @@ const year = new Date().getFullYear();
             Genesyx shop
           </a>
         </li>
+        {companyLinks.map((l) => (
+          <li>
+            <a href={l.href} class="hover:text-lavender">
+              {l.label}
+            </a>
+          </li>
+        ))}
         <li>
           <a href="/privacy" class="hover:text-lavender">
             Privacy
