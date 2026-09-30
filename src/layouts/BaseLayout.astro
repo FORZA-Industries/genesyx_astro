@@ -22,7 +22,7 @@ const robots =
 const base = Astro.site ?? Astro.url;
 const canonical = new URL(cleanPath(Astro.url.pathname), base).toString();
 const fullTitle =
-  title === site.name ? `${site.name} · ${site.tagline}` : `${title} · ${site.name}`;
+  title === site.name ? `${site.name} · ${site.titleDescriptor}` : `${title} · ${site.name}`;
 const ogImage = new URL("/og.png", base).toString();
 const jsonLd = graph(organization(base), website(base), ...schema);
 ---

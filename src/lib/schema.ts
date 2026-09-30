@@ -9,6 +9,7 @@ export function organization(base: URL | string): Thing {
     "@type": "Organization",
     "@id": abs("/#organization", base),
     name: site.name,
+    legalName: site.legalName,
     url: abs("/", base),
     logo: abs("/brand/icon-512.png", base),
     description: site.description,
@@ -24,6 +25,19 @@ export function website(base: URL | string): Thing {
     name: site.name,
     description: site.shortDescription,
     inLanguage: site.lang,
+    publisher: { "@id": abs("/#organization", base) },
+  };
+}
+
+export function mobileApplication(base: URL | string): Thing {
+  return {
+    "@type": "MobileApplication",
+    "@id": abs("/#app", base),
+    name: site.name,
+    url: site.links.appStore,
+    operatingSystem: "iOS 16.0 or later",
+    applicationCategory: "HealthApplication",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "GBP" },
     publisher: { "@id": abs("/#organization", base) },
   };
 }
