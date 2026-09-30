@@ -4,6 +4,7 @@ description: "What the Shettles method says about timing, vaginal pH and conceiv
 eyebrow: "Guide"
 summary: "The Shettles method is a natural approach to trying for a girl or a boy, proposed by Dr Landrum B. Shettles in the 1960s. It times intercourse relative to ovulation: two to four days before when hoping for a girl, and as close to ovulation as possible when hoping for a boy. Large studies have not found that timing changes a baby's sex, so no outcome is guaranteed; Genesyx helps you follow the method consistently and safely."
 order: 1
+published: 2026-09-24
 updated: 2026-09-30
 reviewed: false
 ---

@@ -15,6 +15,8 @@ still needs.
 | `/ovulation-tests`               | "When should I use ovulation tests?"                                              | Fertile window, LH surge, cycle-length table                                                | Wilcox 1995, NHS, Tommy's, StatPearls cited; kit LH test details and reviewer **missing**                                                        | `/how-to-conceive-a-girl-or-boy`                                   | Unassigned |
 | `/evidence`                      | "Does this actually work?"                                                        | What Genesyx does and doesn't claim                                                         | 8 studies with evidence-strength table; named advisor with credentials **missing** (highest-impact gap)                                          | guides                                                             | Unassigned |
 | `/faq`                           | Pre-purchase questions                                                            | 12 direct answers                                                                           | 4 answers contain placeholders and are excluded from FAQ structured data until completed                                                         | related pages per answer                                           | Unassigned |
+| `/about`                         | "Who is behind Genesyx?"                                                          | Company, what the programme is, honesty standard, review cadence                            | Company details as used for the app (confirm for site)                                                                                           | `/xx`, `/xy`, `/evidence`, `/contact`                              | Unassigned |
+| `/contact`                       | "How do I reach Genesyx?"                                                         | Email, scope of help, GP signposting, company details                                       | Contact email confirmed for the app                                                                                                              | `/privacy`, `/ovulation-tests`                                     | Unassigned |
 | `/privacy`                       | Legal                                                                             | Data collected by the waitlist                                                              | Contact email, storage region, retention and governing law **missing**                                                                           | —                                                                  | Unassigned |
 
 ## Business identity (keep consistent everywhere)
@@ -28,3 +30,23 @@ Official profiles in `sameAs` (Organization JSON-LD): genesyx.co.uk, App Store, 
 Not yet confirmed, so deliberately absent from the site, structured data and `llms.txt`: legal entity,
 contact email, address or service area, release date, prices, founders, authors and advisors, social profiles.
 Add them to `src/data/site.ts` once verified.
+
+## Freshness and review cadence
+
+A page's `updated` date (shown on the page and in `dateModified`) changes only when its content really
+changes. Review on this schedule and bump `updated` only if something was revised:
+
+| Page type                                                                                                     | Review every                                                 | Owner                                 |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------- |
+| Guides (`/evidence`, `/shettles-method`, `/vaginal-ph`, `/ovulation-tests`, `/how-to-conceive-a-girl-or-boy`) | 90 days, or when NHS guidance or new research changes        | Unassigned (needs the named reviewer) |
+| Programme pages (`/xx`, `/xy`) and home                                                                       | 90 days, and whenever the kit, price or release date changes | Unassigned                            |
+| Legal and company (`/privacy`, `/about`, `/contact`)                                                          | 90 days                                                      | Unassigned                            |
+| Facts that change fast (prices, release date, app availability)                                               | Monthly                                                      | Unassigned                            |
+
+After each review, re-check every reference link still resolves and still says what we cite it for.
+
+## AI crawler access
+
+`robots.txt` allows all crawlers and names the AI search and training bots explicitly
+(`src/pages/robots.txt.ts`). Vercel Firewall: Bot Protection off, AI Bots set to Allow, no custom
+rules (checked 30 Sept 2026). If either is ever turned on, robots.txt stops mattering for AI visibility.

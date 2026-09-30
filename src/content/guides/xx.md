@@ -6,6 +6,7 @@ summary: "The Genesyx XX programme is a 90-day preconception programme for coupl
 path: xx
 type: page
 order: 3
+published: 2026-09-24
 updated: 2026-09-30
 reviewed: false
 ---

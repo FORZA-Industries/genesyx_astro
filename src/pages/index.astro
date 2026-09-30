@@ -9,7 +9,7 @@ import Together from "@/components/sections/Together.astro";
 import Questions from "@/components/sections/Questions.astro";
 import Join from "@/components/sections/Join.astro";
 import { site } from "@/data/site";
-import { faqPage } from "@/lib/schema";
+import { faqPage, softwareApplication } from "@/lib/schema";
 import { faqForSchema } from "@/lib/text";
 
 const featured = faqForSchema(
@@ -17,7 +17,11 @@ const featured = faqForSchema(
 );
 ---
 
-<BaseLayout title={site.name} description={site.description} schema={[faqPage(featured)]}>
+<BaseLayout
+  title={site.name}
+  description={site.description}
+  schema={[faqPage(featured), softwareApplication(Astro.site ?? Astro.url)]}
+>
   <Hero />
   <Why />
   <Inside />

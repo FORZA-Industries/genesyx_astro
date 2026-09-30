@@ -4,6 +4,7 @@ description: "The natural methods couples try when hoping for a girl or a boy, i
 eyebrow: "Guide"
 summary: "There is no proven natural way to choose whether you conceive a girl or a boy. The most widely followed approach is the Shettles method: intercourse two to four days before ovulation when hoping for a girl, and as close to ovulation as possible when hoping for a boy. Large studies have not found that timing changes a baby's sex, so treat any method as a plan to follow, not a promise."
 order: 6
+published: 2026-09-24
 updated: 2026-09-30
 reviewed: false
 ---

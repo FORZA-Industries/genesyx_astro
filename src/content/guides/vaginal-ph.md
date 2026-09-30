@@ -4,6 +4,7 @@ description: "What vaginal pH is, what a healthy reading looks like, what change
 eyebrow: "Guide"
 summary: "Vaginal pH measures how acidic the vagina is. A healthy reading is usually between 3.8 and 4.5, kept low by lactobacilli, the vagina's protective bacteria. The Shettles theory proposes that pH may favour X- or Y-bearing sperm, but this has not been shown in human studies. Genesyx includes at-home pH strips so you see real readings, and never recommends douching or home remedies to change them."
 order: 2
+published: 2026-09-24
 updated: 2026-09-30
 reviewed: false
 ---

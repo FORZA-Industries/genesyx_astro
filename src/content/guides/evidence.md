@@ -4,6 +4,7 @@ description: "An honest review of the research on the Shettles theory, intercour
 eyebrow: "Evidence"
 summary: "Research has not shown that any natural method reliably changes whether you conceive a girl or a boy. The largest prospective studies of intercourse timing found no link with the baby's sex, and modern lab work finds no meaningful difference in speed or size between X- and Y-bearing sperm. Genesyx does not claim to change the odds; it helps couples who choose the Shettles approach follow it consistently and safely."
 order: 5
+published: 2026-09-24
 updated: 2026-09-30
 reviewed: false
 ---

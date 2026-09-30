@@ -12,7 +12,32 @@ export function organization(base: URL | string): Thing {
     url: abs("/", base),
     logo: abs("/brand/icon-512.png", base),
     description: site.description,
+    legalName: site.legalName,
+    email: site.email,
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      email: site.email,
+      availableLanguage: "en-GB",
+    },
     ...(site.sameAs.length ? { sameAs: site.sameAs } : {}),
+  };
+}
+
+// The companion app, described as it appears in the App Store and Google Play (free download).
+export function softwareApplication(base: URL | string): Thing {
+  return {
+    "@type": "MobileApplication",
+    "@id": abs("/#app", base),
+    name: site.app.name,
+    operatingSystem: "iOS, Android",
+    applicationCategory: "HealthApplication",
+    description:
+      "The Genesyx companion app shows your vaginal pH readings, cycle day and timing window in one view.",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "GBP" },
+    installUrl: site.app.appStore,
+    sameAs: [site.app.appStore, site.app.googlePlay],
+    publisher: { "@id": abs("/#organization", base) },
   };
 }
 
@@ -52,16 +77,19 @@ export function breadcrumbs(items: { name: string; path: string }[], base: URL |
 }
 
 export function article(
-  data: { title: string; description: string; updated: Date; path: string },
+  data: { title: string; description: string; updated: Date; published?: Date; path: string },
   base: URL | string,
 ): Thing {
   return {
     "@type": "Article",
     headline: data.title,
     description: data.description,
+    ...(data.published ? { datePublished: data.published.toISOString() } : {}),
     dateModified: data.updated.toISOString(),
+    image: abs("/og.png", base),
     inLanguage: site.lang,
     mainEntityOfPage: abs(data.path, base),
+    isPartOf: { "@id": abs("/#website", base) },
     author: { "@id": abs("/#organization", base) },
     publisher: { "@id": abs("/#organization", base) },
   };

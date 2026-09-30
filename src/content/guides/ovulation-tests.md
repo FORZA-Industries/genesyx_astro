@@ -4,6 +4,7 @@ description: "How ovulation tests work, when to start testing, how to read an LH
 eyebrow: "Guide"
 summary: "Your fertile window is about six days: the five days before ovulation and the day of ovulation itself. Ovulation tests detect the surge in luteinising hormone (LH) that comes one to two days before you ovulate, which helps you plan timing. If you simply want to get pregnant, the NHS advises sex every two to three days throughout your cycle. Genesyx includes ovulation tests and logs your results in its companion app."
 order: 8
+published: 2026-09-24
 updated: 2026-09-30
 reviewed: false
 ---

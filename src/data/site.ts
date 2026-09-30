@@ -9,8 +9,11 @@ export const site = {
   shortDescription: "A considered 90-day preconception programme inspired by the Shettles theory.",
   locale: "en_GB",
   lang: "en-GB",
-  // Not yet confirmed: legal entity, contact email, address, service area, release date.
-  // Add them here (and they flow into the footer, JSON-LD and llms.txt) once supplied.
+  // Company and contact details, as used for the Genesyx app (confirm they also apply to this site).
+  legalName: "Genesyx Ltd",
+  companyNumber: "16913651",
+  email: "info@genesyx.co.uk",
+  // Not yet confirmed: service area, release date, prices, founders, advisors.
   // Official Genesyx profiles. Linking them in Organization JSON-LD tells search and AI engines these
   // are one brand, which helps separate Genesyx from unrelated companies with similar names.
   sameAs: [
@@ -18,6 +21,12 @@ export const site = {
     "https://apps.apple.com/gb/app/genesyx/id6787682466",
     "https://play.google.com/store/apps/details?id=com.genesyx.app",
   ] as string[],
+  // The Genesyx companion app (free on iOS and Android).
+  app: {
+    name: "Genesyx",
+    appStore: "https://apps.apple.com/gb/app/genesyx/id6787682466",
+    googlePlay: "https://play.google.com/store/apps/details?id=com.genesyx.app",
+  },
   disclaimer:
     "Evidence for the Shettles theory is mixed. Genesyx helps you follow the theory consistently; no outcome is guaranteed.",
 } as const;
@@ -38,6 +47,12 @@ export const learnLinks = [
   { href: "/xy", label: "XY programme" },
   { href: "/evidence", label: "The evidence" },
   { href: "/faq", label: "FAQ" },
+] as const;
+
+export const companyLinks = [
+  { href: "/about", label: "About Genesyx" },
+  { href: "/contact", label: "Contact" },
+  { href: "/privacy", label: "Privacy" },
 ] as const;
 
 export type Path = "xx" | "xy";
