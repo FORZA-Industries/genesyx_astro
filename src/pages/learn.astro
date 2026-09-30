@@ -1,0 +1,109 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import GuideCard from "@/components/GuideCard.astro";
+import { site } from "@/data/site";
+import { abs, breadcrumbs } from "@/lib/schema";
+
+const all = (await getCollection("guides")).sort((a, b) => a.data.order - b.data.order);
+const guides = all.filter((g) => g.data.type === "article");
+const programmes = all.filter((g) => g.data.type === "page");
+
+const title = "Learn: guides to the Shettles method and vaginal pH";
+const description =
+  "Evidence-based guides to the Shettles method, vaginal pH, ovulation tests and trying for a girl or boy, plus the Genesyx XX and XY programmes.";
+const base = Astro.site ?? Astro.url;
+
+const collection = {
+  "@type": "CollectionPage",
+  "@id": abs("/learn", base),
+  url: abs("/learn", base),
+  name: title,
+  description,
+  inLanguage: site.lang,
+  isPartOf: { "@id": abs("/#website", base) },
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: all.map((g, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: abs(`/${g.id}`, base),
+      name: g.data.title,
+    })),
+  },
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  schema={[
+    collection,
+    breadcrumbs(
+      [
+        { name: site.name, path: "/" },
+        { name: "Learn", path: "/learn" },
+      ],
+      base,
+    ),
+  ]}
+>
+  <section class="wrap py-14 lg:py-20">
+    <nav aria-label="Breadcrumb" class="flex flex-wrap gap-1.5 text-xs text-muted">
+      <a href="/" class="hover:text-ink">
+        Home
+      </a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Learn</span>
+    </nav>
+    <p class="eyebrow mt-10">Learn</p>
+    <h1 class="display-md mt-4 max-w-3xl">
+      The science, <span class="accent">honestly explained.</span>
+    </h1>
+    <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink">
+      Guides to the Shettles method, vaginal pH, ovulation timing and what research says about
+      conceiving a girl or a boy. Every guide cites its sources and says what isn't proven.
+    </p>
+
+    <h2 class="eyebrow mt-16">Guides</h2>
+    <ul class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {guides.map((g) => (
+        <li>
+          <GuideCard guide={g} />
+        </li>
+      ))}
+    </ul>
+
+    <h2 class="eyebrow mt-16">The programmes</h2>
+    <ul class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {programmes.map((g) => (
+        <li>
+          <GuideCard guide={g} />
+        </li>
+      ))}
+      <li>
+        <a
+          href="/faq"
+          class="group flex h-full flex-col justify-between rounded-card border border-line bg-white p-6 transition hover:-translate-y-0.5 hover:shadow-md"
+        >
+          <div>
+            <p class="eyebrow text-[0.625rem]">FAQ</p>
+            <h3 class="mt-3 font-display text-lg font-medium text-ink group-hover:text-lavender">
+              Frequently asked questions
+            </h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">
+              What Genesyx is, what it can and cannot promise, and how the programme works.
+            </p>
+          </div>
+          <span class="pt-5 text-sm font-medium text-ink">
+            Read the FAQ <span aria-hidden="true">→</span>
+          </span>
+        </a>
+      </li>
+    </ul>
+
+    <p class="mt-16 max-w-2xl text-xs leading-relaxed text-muted">
+      {site.disclaimer} These guides are general information, not medical advice.
+    </p>
+  </section>
+</BaseLayout>
