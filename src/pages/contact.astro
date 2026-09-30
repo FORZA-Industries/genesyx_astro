@@ -1,0 +1,40 @@
+---
+import GuideLayout from "@/layouts/GuideLayout.astro";
+import { site } from "@/data/site";
+---
+
+<GuideLayout
+  title="Contact Genesyx"
+  description="How to contact Genesyx about the XX / XY programme, the waitlist, the companion app or your data."
+  eyebrow="Contact"
+  type="page"
+  summary={`Email ${site.email} for questions about Genesyx, the waitlist, the companion app or your data. We reply by email; we can't give personal medical advice, so for health concerns please speak to your GP or a pharmacist.`}
+  updated={new Date("2026-09-30")}
+>
+  <h2>Email us</h2>
+  <p>
+    <a href={`mailto:${site.email}`}>{site.email}</a>
+  </p>
+
+  <h2>What we can help with</h2>
+  <ul>
+    <li>
+      Questions about the <a href="/xx">XX</a> and <a href="/xy">XY</a> programmes
+    </li>
+    <li>Your place on the waitlist, or leaving it</li>
+    <li>The Genesyx companion app</li>
+    <li>
+      Your data and privacy: see our <a href="/privacy">privacy policy</a>
+    </li>
+  </ul>
+
+  <h2>Medical questions</h2>
+  <p>
+    We can't give personal medical advice. If you have symptoms or concerns about your fertility, or
+    you have been trying to conceive for a year (sooner if you are 36 or over), please speak to your
+    GP or a pharmacist.
+  </p>
+
+  <h2>Who we are</h2>
+  <p>Genesyx is operated by {site.legalName}, a UK company.</p>
+</GuideLayout>

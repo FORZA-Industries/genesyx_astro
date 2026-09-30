@@ -13,6 +13,8 @@ create table if not exists public.waitlist (
 );
 
 -- One row per email per route; lower() guards against case duplicates.
+comment on table public.waitlist is 'genesyx.life website XX/XY first-release sign-ups. Insert-only for anon; read via dashboard/service role.';
+
 create unique index if not exists waitlist_email_path_key on public.waitlist (lower(email), path);
 
 alter table public.waitlist enable row level security;
@@ -24,5 +26,5 @@ create policy "anon can join waitlist"
   to anon
   with check (true);
 
-revoke all on public.waitlist from anon;
+revoke all on public.waitlist from anon, authenticated;
 grant insert (email, path, source_page, referrer, utm, consent_text) on public.waitlist to anon;

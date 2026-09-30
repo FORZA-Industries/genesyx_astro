@@ -1,23 +1,58 @@
 ---
 import GuideLayout from "@/layouts/GuideLayout.astro";
+import { site } from "@/data/site";
 ---
 
 <GuideLayout
   title="Privacy policy"
-  description="How Genesyx collects and uses your information."
+  description="How Genesyx collects and uses your information when you join the waitlist."
   eyebrow="Legal"
   type="page"
-  summary="How Genesyx handles the details you give us when you join the waitlist."
+  summary="When you join the Genesyx waitlist we store your email address and the programme you chose, only so we can tell you when it is ready. We never sell your data, and you can ask us to delete it at any time."
   noindex
-  updated={new Date("2026-09-24")}
+  updated={new Date("2026-09-30")}
 >
-  <h2>What we collect</h2>
+  <h2>Who we are</h2>
   <p>
-    When you join the waitlist we store your email address, the programme you chose (XX or XY), the
-    page you joined from and campaign parameters from the link you followed.
+    Genesyx is operated by {site.legalName}, a UK company, which is the data controller for
+    information collected on this website. You can contact us at
+    <a href={`mailto:${site.email}`}>{site.email}</a>.
   </p>
-  <h2>Why</h2>
-  <p>To email you about the release of your chosen programme. We never sell your data.</p>
+
+  <h2>What we collect</h2>
+  <p>When you join the waitlist we store:</p>
+  <ul>
+    <li>your email address</li>
+    <li>the programme you chose (XX or XY)</li>
+    <li>
+      the page you joined from, the website that referred you and any campaign tags in the link
+    </li>
+    <li>the date and time you joined, and a record that you agreed to receive launch emails</li>
+  </ul>
+  <p>We do not use advertising or analytics cookies on the waitlist form.</p>
+
+  <h2>Why, and our legal basis</h2>
+  <p>
+    We use your details only to email you about the release of your chosen programme. Our legal
+    basis is your consent, which you give when you join. We never sell your data or share it for
+    marketing by anyone else.
+  </p>
+
+  <h2>Where it is stored</h2>
+  <p>
+    Your email address and programme choice are stored with our email provider, Resend, which we use
+    to send you the launch email.
+  </p>
+
+  <h2>How long we keep it</h2>
+  <p>We keep your details until you unsubscribe or ask us to delete them.</p>
+
   <h2>Your rights</h2>
-  <p>You can ask to access, correct or delete your data at any time.</p>
+  <p>
+    You can ask to see, correct or delete your data, or withdraw your consent, at any time: every
+    email we send includes an unsubscribe link, or write to
+    <a href="mailto:info@genesyx.co.uk">info@genesyx.co.uk</a>. If you are unhappy with how we
+    handle your data, you can complain to the Information Commissioner's Office at
+    <a href="https://ico.org.uk/make-a-complaint/">ico.org.uk</a>.
+  </p>
 </GuideLayout>

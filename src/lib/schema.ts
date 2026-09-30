@@ -13,6 +13,13 @@ export function organization(base: URL | string): Thing {
     url: abs("/", base),
     logo: abs("/brand/icon-512.png", base),
     description: site.description,
+    email: site.email,
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      email: site.email,
+      availableLanguage: "en-GB",
+    },
     ...(site.sameAs.length ? { sameAs: site.sameAs } : {}),
   };
 }
@@ -66,16 +73,19 @@ export function breadcrumbs(items: { name: string; path: string }[], base: URL |
 }
 
 export function article(
-  data: { title: string; description: string; updated: Date; path: string },
+  data: { title: string; description: string; updated: Date; published?: Date; path: string },
   base: URL | string,
 ): Thing {
   return {
     "@type": "Article",
     headline: data.title,
     description: data.description,
+    ...(data.published ? { datePublished: data.published.toISOString() } : {}),
     dateModified: data.updated.toISOString(),
+    image: abs("/og.png", base),
     inLanguage: site.lang,
     mainEntityOfPage: abs(data.path, base),
+    isPartOf: { "@id": abs("/#website", base) },
     author: { "@id": abs("/#organization", base) },
     publisher: { "@id": abs("/#organization", base) },
   };

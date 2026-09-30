@@ -15,9 +15,11 @@ export const site = {
     appStore: "https://apps.apple.com/app/genesyx/id6787682466",
     shop: "https://genesyx.co.uk/",
   },
+  // Contact email for the site, app and genesyx.co.uk (confirmed by the business, Sept 2026).
+  email: "info@genesyx.co.uk",
   locale: "en_GB",
   lang: "en-GB",
-  // Not yet confirmed: contact email, address, service area, release date.
+  // Not yet confirmed: company number, address, service area, release date.
   // Add them here (and they flow into the footer, JSON-LD and llms.txt) once supplied.
   sameAs: ["https://genesyx.co.uk/", "https://apps.apple.com/app/genesyx/id6787682466"],
   disclaimer:
@@ -40,6 +42,11 @@ export const learnLinks = [
   { href: "/xy", label: "XY programme" },
   { href: "/evidence", label: "The evidence" },
   { href: "/faq", label: "FAQ" },
+] as const;
+
+export const companyLinks = [
+  { href: "/about", label: "About Genesyx" },
+  { href: "/contact", label: "Contact" },
 ] as const;
 
 export type Path = "xx" | "xy";

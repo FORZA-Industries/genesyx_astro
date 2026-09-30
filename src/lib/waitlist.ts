@@ -5,52 +5,41 @@ export interface WaitlistResult {
   message: string;
 }
 
-const utmKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"] as const;
-
-// Talks to Supabase PostgREST directly instead of bundling supabase-js (~40 kB) for one insert.
-// The anon key is public by design; RLS only allows INSERT into public.waitlist.
+// Posts to the /api/waitlist Vercel Function, which adds the contact to the matching Resend
+// segment. The Resend key stays server-side; the browser only ever talks to our own origin.
 export async function submitWaitlist(input: {
   email: string;
   path: Path;
+  company?: string;
 }): Promise<WaitlistResult> {
-  const url = import.meta.env.PUBLIC_SUPABASE_URL;
-  const key = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
   const label = input.path.toUpperCase();
 
-  if (!url || !key) {
-    console.warn("[waitlist] Supabase env vars missing; submission not stored.", input);
+  // `astro dev` doesn't run Vercel Functions, so local development shows a clearly-labelled
+  // preview message. Production builds never claim success unless the function confirms it.
+  if (import.meta.env.DEV) {
+    console.warn("[waitlist] Dev mode: /api/waitlist not running; submission not stored.", input);
     return { ok: true, message: `Preview mode: you'd now be on the ${label} list.` };
   }
 
-  const params = new URLSearchParams(location.search);
-  const utm = Object.fromEntries(utmKeys.map((k) => [k, params.get(k)]).filter(([, v]) => v));
-
   try {
-    const res = await fetch(`${url}/rest/v1/waitlist`, {
+    const res = await fetch("/api/waitlist", {
       method: "POST",
-      headers: {
-        apikey: key,
-        // Legacy anon keys are JWTs and also go in Authorization; new sb_publishable_ keys must not.
-        ...(key.startsWith("eyJ") ? { Authorization: `Bearer ${key}` } : {}),
-        "Content-Type": "application/json",
-        Prefer: "return=minimal",
-      },
-      body: JSON.stringify({
-        email: input.email.toLowerCase(),
-        path: input.path,
-        source_page: location.pathname,
-        referrer: document.referrer || null,
-        utm,
-        consent_text: "launch-emails-v1",
-      }),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(input),
     });
 
-    // 409 = unique violation: already signed up. Treat as success to avoid leaking membership.
-    if (res.ok || res.status === 409) {
+    if (res.ok) {
       return {
         ok: true,
         message: `You're on the ${label} list. We'll be in touch before release.`,
       };
+    }
+    if (res.status === 422) {
+      return { ok: false, message: "Please check your email address and try again." };
+    }
+    if (res.status === 503 || res.status === 404) {
+      // Function missing or not configured yet: be honest rather than fake success.
+      return { ok: false, message: "Sign-ups aren't open just yet. Please check back soon." };
     }
     throw new Error(`HTTP ${res.status}`);
   } catch (err) {

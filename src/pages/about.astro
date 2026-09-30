@@ -1,0 +1,58 @@
+---
+import GuideLayout from "@/layouts/GuideLayout.astro";
+import { site } from "@/data/site";
+---
+
+<GuideLayout
+  title="About Genesyx"
+  description="Who is behind Genesyx, what the XX / XY preconception programme is for, and the evidence standard we hold ourselves to."
+  eyebrow="About"
+  type="page"
+  summary={`Genesyx is a 90-day XX / XY preconception programme for couples who want to try the Shettles approach with a clear plan, safe products and honest information. It is operated by ${site.legalName}, a UK company, alongside the free Genesyx companion app. Genesyx does not claim that any method can choose or guarantee a baby's sex.`}
+  updated={new Date("2026-09-30")}
+>
+  <h2>What Genesyx is</h2>
+  <p>
+    Genesyx brings together the parts of the Shettles approach that couples usually piece together
+    alone: a route-specific supplement formula, a nutrition guide, at-home vaginal pH and ovulation
+    tests, and a companion app that shows your readings and timing window in one view. There are two
+    routes: <a href="/xx">XX</a> for couples hoping for a girl and <a href="/xy">XY</a> for couples
+    hoping for a boy.
+  </p>
+
+  <h2>What we believe</h2>
+  <ul>
+    <li>
+      <strong>Honesty first.</strong> Research has not shown that timing, pH or diet reliably
+      changes a baby's sex. We say so on every page, and our <a href="/evidence">evidence page</a>{" "}
+      lists the studies.
+    </li>
+    <li>
+      <strong>Safety over hacks.</strong> We never recommend douching or home remedies to change
+      vaginal pH.
+    </li>
+    <li>
+      <strong>Every outcome is welcome.</strong> Genesyx is a plan to follow together, not a
+      promise.
+    </li>
+  </ul>
+
+  <h2>Who we are</h2>
+  <p>
+    Genesyx is operated by {site.legalName}, a UK company. The same team builds the Genesyx
+    companion app, available free on the <a href={site.links.appStore}>App Store</a>, and runs the
+    <a href={site.links.shop}>Genesyx shop</a>.
+  </p>
+
+  <h2>How we keep content accurate</h2>
+  <p>
+    Every guide cites its sources and shows the date it was last updated. We review educational
+    guides at least every 90 days and update them when guidance or research changes.
+  </p>
+
+  <h2>Get in touch</h2>
+  <p>
+    Email <a href={`mailto:${site.email}`}>{site.email}</a>, or see our{" "}
+    <a href="/contact">contact page</a>.
+  </p>
+</GuideLayout>

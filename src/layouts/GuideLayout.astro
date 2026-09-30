@@ -11,6 +11,7 @@ interface Props {
   eyebrow: string;
   summary: string;
   updated: Date;
+  published?: Date;
   path?: Path;
   type?: "article" | "page";
   noindex?: boolean;
@@ -23,6 +24,7 @@ const {
   eyebrow,
   summary,
   updated,
+  published,
   path,
   type = "article",
   noindex = false,
@@ -44,7 +46,9 @@ const updatedLabel = updated.toLocaleDateString("en-GB", {
   ogType={type === "article" ? "article" : "website"}
   noindex={noindex}
   schema={[
-    (type === "article" ? article : webPage)({ title, description, updated, path: pathname }, base),
+    type === "article"
+      ? article({ title, description, updated, published, path: pathname }, base)
+      : webPage({ title, description, updated, path: pathname }, base),
     breadcrumbs(
       [
         { name: site.name, path: "/" },
