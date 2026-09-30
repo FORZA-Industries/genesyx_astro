@@ -43,15 +43,17 @@ Apply `supabase/migrations/20260924000000_create_waitlist.sql`. The anon/publish
 `INSERT` into `public.waitlist`; nobody can read the list with it. Duplicate sign-ups (same email +
 route) return 409, which the form treats as success.
 
-## Deploying
+## Hosting
 
-**Vercel:** import the repo at vercel.com/new. Astro is auto-detected and `vercel.json` sets the build,
-clean URLs (`/faq` serves `faq.html`) and security/cache headers. Add the env vars above under
-Project → Settings → Environment Variables. Every PR gets its own preview URL.
+Hosted on **Vercel** (project `genesyx-astro`); DNS for `genesyx.life` is at **ICUK**.
 
-**Cloudflare:** Workers static assets via `wrangler.jsonc` (`npx wrangler deploy` after `npm run build`),
-or Cloudflare Pages with build command `npm run build` and output `dist`. `public/_headers` sets the same
-headers there.
+- Merging to `main` deploys production; every PR gets a preview URL.
+- `vercel.json` sets the build, clean URLs (`/faq` serves `faq.html`), security/cache headers and
+  redirects for retired URLs.
+- Domains: `www.genesyx.life` is primary; `genesyx.life` redirects to it (Vercel → Settings → Domains).
+- ICUK DNS: `www` CNAME to the Vercel value shown in the dashboard, `@` A `76.76.21.21`. Leave the MX,
+  SPF and Bing verification records alone.
+- Env vars live in Vercel → Settings → Environment Variables. Changing them needs a redeploy.
 
 ## Before launch
 
@@ -59,5 +61,5 @@ headers there.
 - [ ] Claims reviewed against the GB nutrition and health claims register / ASA CAP Code
 - [ ] Named advisor and references on `/evidence`
 - [ ] Real privacy policy
-- [ ] Final domain in `SITE_URL` (custom domain), then resubmit the sitemap
+- [x] Final domain: `https://www.genesyx.life`
 - [ ] Submit sitemap in Google Search Console
