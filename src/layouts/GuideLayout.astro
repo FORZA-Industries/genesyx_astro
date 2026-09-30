@@ -45,6 +45,10 @@ const og = image
   : undefined;
 const ogImage = og && { src: og.src, width: 1200, height: 630 };
 const imageUrl = og && new URL(og.src, base).toString();
+const fmt = (d: Date) =>
+  d.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+// Only show "First published" when it differs from the last update.
+const showPublished = published && published.toDateString() !== updated.toDateString();
 const updatedLabel = updated.toLocaleDateString("en-GB", {
   day: "numeric",
   month: "long",
@@ -83,6 +87,12 @@ const updatedLabel = updated.toLocaleDateString("en-GB", {
     <p class="eyebrow mt-10">{eyebrow}</p>
     <h1 class="display-md mt-4">{title}</h1>
     <p class="mt-4 text-xs text-muted">
+      {showPublished && (
+        <>
+          First published <time datetime={published.toISOString()}>{fmt(published)}</time>
+          <span aria-hidden="true"> · </span>
+        </>
+      )}
       Last updated <time datetime={updated.toISOString()}>{updatedLabel}</time>
     </p>
 
