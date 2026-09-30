@@ -18,8 +18,19 @@ export async function submitWaitlist(input: {
   const label = input.path.toUpperCase();
 
   if (!url || !key) {
-    console.warn("[waitlist] Supabase env vars missing; submission not stored.", input);
-    return { ok: true, message: `Preview mode: you'd now be on the ${label} list.` };
+    // Never tell a real visitor they've joined when nothing was stored. The friendly preview
+    // message is for local development only; a production build without keys fails honestly.
+    if (import.meta.env.DEV) {
+      console.warn("[waitlist] Supabase env vars missing; submission not stored.", input);
+      return { ok: true, message: `Preview mode: you'd now be on the ${label} list.` };
+    }
+    console.error(
+      "[waitlist] PUBLIC_SUPABASE_URL / PUBLIC_SUPABASE_ANON_KEY not set in this build.",
+    );
+    return {
+      ok: false,
+      message: "Sign-ups aren't open just yet. Please check back soon.",
+    };
   }
 
   const params = new URLSearchParams(location.search);
