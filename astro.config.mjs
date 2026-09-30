@@ -4,7 +4,7 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 
-// Canonical origin (no trailing slash). genesyx.life and genesyx.pages.dev redirect here.
+// Canonical origin (no trailing slash). genesyx.life redirects here (Vercel domain setting).
 const site = process.env.SITE_URL ?? "https://www.genesyx.life";
 
 // Content collections aren't available in config, so read each guide's `updated` frontmatter directly.
