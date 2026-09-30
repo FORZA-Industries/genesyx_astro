@@ -7,11 +7,19 @@ export const site = {
   description:
     "Genesyx is a 90-day XX / XY preconception programme inspired by the Shettles theory, combining a route-specific supplement formula, nutrition guide, at-home vaginal pH and ovulation tests, and a companion app.",
   shortDescription: "A considered 90-day preconception programme inspired by the Shettles theory.",
+  // Home page <title> suffix: says what Genesyx is, so brand searches can tell it apart.
+  titleDescriptor: "XX / XY preconception programme and companion app",
+  // Confirmed by the business (Sept 2026): the operating company and the brand's other properties.
+  legalName: "SF MEDIA & PR LTD",
+  links: {
+    appStore: "https://apps.apple.com/app/genesyx/id6787682466",
+    shop: "https://genesyx.co.uk/",
+  },
   locale: "en_GB",
   lang: "en-GB",
-  // Not yet confirmed: legal entity, contact email, address, service area, release date.
+  // Not yet confirmed: contact email, address, service area, release date.
   // Add them here (and they flow into the footer, JSON-LD and llms.txt) once supplied.
-  sameAs: [] as string[],
+  sameAs: ["https://genesyx.co.uk/", "https://apps.apple.com/app/genesyx/id6787682466"],
   disclaimer:
     "Evidence for the Shettles theory is mixed. Genesyx helps you follow the theory consistently; no outcome is guaranteed.",
 } as const;
