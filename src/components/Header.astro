@@ -11,7 +11,7 @@ const campaign = campaignFor(cleanPath(Astro.url.pathname));
     <a href="/" class="shrink-0">
       <Logo class="h-6 w-auto sm:h-7" eager />
     </a>
-    <nav aria-label="Primary" class="hidden md:block">
+    <nav aria-label="Primary" class="hidden lg:block">
       <ul class="flex items-center gap-8 text-[0.8125rem] text-ink">
         {nav.map((item) => (
           <li>
@@ -33,7 +33,7 @@ const campaign = campaignFor(cleanPath(Astro.url.pathname));
     <div class="flex items-center gap-3 sm:gap-4">
       <a
         href={shopUrl(site.links.shopAll, campaign, "header-mobile")}
-        class="text-[0.8125rem] text-ink transition hover:text-lavender md:hidden"
+        class="hidden text-[0.8125rem] text-ink transition hover:text-lavender min-[360px]:inline lg:hidden"
       >
         Shop
       </a>

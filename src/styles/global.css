@@ -79,7 +79,7 @@
     @apply inline-flex items-center justify-center gap-3 rounded-sm bg-ink px-5 py-3 text-sm font-medium text-white transition hover:bg-lavender;
   }
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-3 rounded-sm border border-ink px-5 py-3 text-sm font-medium text-ink transition hover:border-lavender hover:text-lavender;
+    @apply inline-flex items-center justify-center gap-3 rounded-sm px-5 py-3 text-sm font-medium text-ink ring-1 ring-ink transition ring-inset hover:text-lavender hover:ring-lavender;
   }
 
   /* Long-form guide typography */
