@@ -1,10 +1,13 @@
 ---
 import Logo from "./Logo.astro";
-import { nav } from "@/data/site";
+import { nav, site } from "@/data/site";
+import { campaignFor, shopUrl } from "@/lib/shop";
+import { cleanPath } from "@/lib/url";
+const campaign = campaignFor(cleanPath(Astro.url.pathname));
 ---
 
 <header class="sticky top-0 z-40 border-b border-line/70 bg-canvas/85 backdrop-blur-md">
-  <div class="wrap flex h-16 items-center justify-between gap-6">
+  <div class="wrap flex h-16 items-center justify-between gap-3 sm:gap-6">
     <a href="/" class="shrink-0">
       <Logo class="h-6 w-auto sm:h-7" eager />
     </a>
@@ -17,10 +20,26 @@ import { nav } from "@/data/site";
             </a>
           </li>
         ))}
+        <li>
+          <a
+            href={shopUrl(site.links.shopAll, campaign, "header-nav")}
+            class="transition hover:text-lavender"
+          >
+            Shop
+          </a>
+        </li>
       </ul>
     </nav>
-    <a href="/#join" class="btn-primary px-4 py-2.5 text-[0.8125rem]">
-      Choose XX or XY <span aria-hidden="true">↗</span>
-    </a>
+    <div class="flex items-center gap-3 sm:gap-4">
+      <a
+        href={shopUrl(site.links.shopAll, campaign, "header-mobile")}
+        class="text-[0.8125rem] text-ink transition hover:text-lavender md:hidden"
+      >
+        Shop
+      </a>
+      <a href="/#join" class="btn-primary px-3 py-2.5 text-[0.8125rem] sm:px-4">
+        Choose XX or XY <span aria-hidden="true">↗</span>
+      </a>
+    </div>
   </div>
 </header>
