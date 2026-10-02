@@ -1,7 +1,10 @@
 ---
 import Logo from "./Logo.astro";
 import { site, learnLinks, companyLinks } from "@/data/site";
+import { campaignFor, shopUrl } from "@/lib/shop";
+import { cleanPath } from "@/lib/url";
 const year = new Date().getFullYear();
+const campaign = campaignFor(cleanPath(Astro.url.pathname));
 ---
 
 <footer class="mt-24 border-t border-line">
@@ -46,7 +49,11 @@ const year = new Date().getFullYear();
           </a>
         </li>
         <li>
-          <a href={site.links.shop} rel="noopener" class="hover:text-lavender">
+          <a
+            href={shopUrl(site.links.shop, campaign, "footer")}
+            rel="noopener"
+            class="hover:text-lavender"
+          >
             Genesyx shop
           </a>
         </li>

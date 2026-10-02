@@ -14,6 +14,8 @@ export const site = {
   links: {
     appStore: "https://apps.apple.com/app/genesyx/id6787682466",
     shop: "https://genesyx.co.uk/",
+    // The shop's all-products page on genesyx.co.uk (live, Oct 2026).
+    shopAll: "https://genesyx.co.uk/pages/shop",
   },
   // Contact email for the site, app and genesyx.co.uk (confirmed by the business, Sept 2026).
   email: "info@genesyx.co.uk",
@@ -52,9 +54,25 @@ export const companyLinks = [
 
 export type Path = "xx" | "xy";
 
-export const paths: Record<Path, { label: string; hope: string; href: string }> = {
-  xx: { label: "XX", hope: "a girl", href: "/xx" },
-  xy: { label: "XY", hope: "a boy", href: "/xy" },
+// product / productUrl: the route's formula, on sale at genesyx.co.uk (live, Oct 2026).
+export const paths: Record<
+  Path,
+  { label: string; hope: string; href: string; product: string; productUrl: string }
+> = {
+  xx: {
+    label: "XX",
+    hope: "a girl",
+    href: "/xx",
+    product: "XX Formula",
+    productUrl: "https://genesyx.co.uk/products/xx-formula",
+  },
+  xy: {
+    label: "XY",
+    hope: "a boy",
+    href: "/xy",
+    product: "XY Formula",
+    productUrl: "https://genesyx.co.uk/products/xy-formula",
+  },
 };
 
 export const programme = [
