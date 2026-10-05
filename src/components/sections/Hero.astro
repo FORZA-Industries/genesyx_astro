@@ -1,9 +1,7 @@
 ---
 import { Picture } from "astro:assets";
 import PathChoice from "@/components/PathChoice.astro";
-import phone from "@/assets/images/app-phone.png";
-import xx from "@/assets/images/formula-xx.png";
-import xy from "@/assets/images/formula-xy.png";
+import hero from "@/assets/images/hero-app-formulas.jpg";
 ---
 
 <section class="wrap grid items-center gap-10 pt-10 pb-16 lg:grid-cols-[1fr_1.1fr] lg:pt-16 lg:pb-24">
@@ -32,33 +30,16 @@ import xy from "@/assets/images/formula-xy.png";
     </p>
   </div>
 
-  <div class="relative mx-auto aspect-[1.08] w-full max-w-xl">
-    <div class="absolute inset-[12%] rounded-full bg-radial from-pink/40 via-aqua/25 to-transparent blur-3xl"></div>
+  <div class="mx-auto w-full max-w-xl">
     <Picture
-      src={phone}
-      alt="Genesyx companion app showing cycle day, vaginal pH reading and timing window"
+      src={hero}
+      alt="The Genesyx companion app showing cycle phase and vaginal pH trackers, between the Genesyx XX Formula and XY Formula boxes"
       formats={["avif", "webp"]}
-      widths={[400, 640, 800]}
-      sizes="(min-width: 1024px) 320px, 55vw"
+      widths={[480, 800, 1200, 1402]}
+      sizes="(min-width: 1024px) 576px, 100vw"
       loading="eager"
       fetchpriority="high"
-      class="absolute top-0 left-1/2 w-[54%] -translate-x-1/2"
-    />
-    <Picture
-      src={xx}
-      alt="Genesyx XX Formula box"
-      formats={["avif", "webp"]}
-      widths={[240, 400]}
-      sizes="(min-width: 1024px) 180px, 28vw"
-      class="absolute bottom-[2%] left-0 w-[33%] -rotate-3"
-    />
-    <Picture
-      src={xy}
-      alt="Genesyx XY Formula box"
-      formats={["avif", "webp"]}
-      widths={[240, 400]}
-      sizes="(min-width: 1024px) 180px, 28vw"
-      class="absolute right-0 bottom-[8%] w-[33%] rotate-3"
+      class="w-full rounded-card"
     />
   </div>
 </section>
