@@ -1,5 +1,5 @@
 ---
-import { paths, type Path } from "@/data/site";
+import { paths, site, type Path } from "@/data/site";
 import { campaignFor, shopUrl } from "@/lib/shop";
 import { cleanPath } from "@/lib/url";
 interface Props {
@@ -27,9 +27,5 @@ const campaign = campaignFor(cleanPath(Astro.url.pathname));
       </div>
     ))}
   </div>
-  <p class="mt-4 text-sm text-muted">
-    {path
-      ? `${paths[path].product} is available now from the Genesyx shop.`
-      : "XX and XY Formula are available now from the Genesyx shop."}
-  </p>
+  <p class="mt-4 text-sm text-muted">{site.availability}</p>
 </aside>

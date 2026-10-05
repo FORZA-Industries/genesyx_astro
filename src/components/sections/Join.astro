@@ -1,5 +1,5 @@
 ---
-import { paths } from "@/data/site";
+import { paths, site } from "@/data/site";
 ---
 
 <section id="join" class="wrap scroll-mt-20">
@@ -14,6 +14,7 @@ import { paths } from "@/data/site";
         Join the first-release list for your route. We'll email you once, when your programme is
         ready.
       </p>
+      <p class="mt-4 max-w-sm text-xs leading-relaxed text-muted">{site.availability}</p>
     </div>
 
     <form id="waitlist" method="post" class="space-y-5" novalidate>

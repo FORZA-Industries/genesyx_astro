@@ -52,6 +52,22 @@
   ],
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "genesyx-astro\\.vercel\\.app"
+        }
+      ],
+      "destination": "https://www.genesyx.life/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap-index.xml",
+      "permanent": true
+    },
+    {
       "source": "/how-to-conceive-a-girl",
       "destination": "/how-to-conceive-a-girl-or-boy",
       "permanent": true

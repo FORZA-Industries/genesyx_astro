@@ -56,7 +56,7 @@ const imageUrl = og && new URL(og.src, base).toString();
   schema={[
     type === "article"
       ? article({ title, description, updated, published, path: pathname, image: imageUrl }, base)
-      : webPage({ title, description, updated, path: pathname, image: imageUrl }, base),
+      : webPage({ title, description, updated, published, path: pathname, image: imageUrl }, base),
     breadcrumbs(
       [
         { name: site.name, path: "/" },
