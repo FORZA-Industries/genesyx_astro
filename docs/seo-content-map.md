@@ -24,28 +24,15 @@ still needs.
 Confirmed: name **Genesyx**, tagline **Try with intention.**, a 90-day XX / XY preconception programme
 inspired by the Shettles theory, pre-launch waitlist, canonical address **https://www.genesyx.life** (`genesyx.life` 308-redirects to it; hosted on Vercel).
 
-Official profiles in `sameAs` (Organization JSON-LD): genesyx.co.uk, App Store, Google Play.
+Official profiles in `sameAs` (Organization JSON-LD): genesyx.co.uk (Shopify shop) and the App Store.
+There is no Google Play app.
 
-Not yet confirmed, so deliberately absent from the site, structured data and `llms.txt`: legal entity,
-contact email, address or service area, release date, prices, founders, authors and advisors, social profiles.
-Add them to `src/data/site.ts` once verified.
+Confirmed: contact email info@genesyx.co.uk; products XX Formula and XY Formula, sold (with prices and
+Product structured data) on genesyx.co.uk.
 
-## Freshness and review cadence
+**Open conflict:** genesyx.life and the App Store name SF MEDIA & PR LTD as operator; genesyx.co.uk's
+structured data names Genesyx Ltd (Companies House 16913651, Ashford, Kent). Settle which entity
+operates which property before adding a company number or address here.
 
-A page's `updated` date (shown on the page and in `dateModified`) changes only when its content really
-changes. Review on this schedule and bump `updated` only if something was revised:
-
-| Page type                                                                                                     | Review every                                                 | Owner                                 |
-| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------- |
-| Guides (`/evidence`, `/shettles-method`, `/vaginal-ph`, `/ovulation-tests`, `/how-to-conceive-a-girl-or-boy`) | 90 days, or when NHS guidance or new research changes        | Unassigned (needs the named reviewer) |
-| Programme pages (`/xx`, `/xy`) and home                                                                       | 90 days, and whenever the kit, price or release date changes | Unassigned                            |
-| Legal and company (`/privacy`, `/about`, `/contact`)                                                          | 90 days                                                      | Unassigned                            |
-| Facts that change fast (prices, release date, app availability)                                               | Monthly                                                      | Unassigned                            |
-
-After each review, re-check every reference link still resolves and still says what we cite it for.
-
-## AI crawler access
-
-`robots.txt` allows all crawlers and names the AI search and training bots explicitly
-(`src/pages/robots.txt.ts`). Vercel Firewall: Bot Protection off, AI Bots set to Allow, no custom
-rules (checked 30 Sept 2026). If either is ever turned on, robots.txt stops mattering for AI visibility.
+Not yet confirmed, so deliberately absent: release date, founders, authors and medical reviewer,
+social profiles.

@@ -45,6 +45,8 @@ const jsonLd = graph(organization(base), website(base), ...schema);
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang={site.lang} href={canonical} />
+    <link rel="alternate" hreflang="x-default" href={canonical} />
     <meta name="robots" content={robots} />
     <meta name="theme-color" content="#343491" />
     <meta name="msvalidate.01" content="967B385D135570B9850161D79349B39B" />
