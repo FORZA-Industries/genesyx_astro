@@ -10,18 +10,26 @@ import Learn from "@/components/sections/Learn.astro";
 import Questions from "@/components/sections/Questions.astro";
 import Join from "@/components/sections/Join.astro";
 import { site } from "@/data/site";
-import { faqPage, mobileApplication } from "@/lib/schema";
+import { faqPage, mobileApplication, webPage } from "@/lib/schema";
 import { faqForSchema } from "@/lib/text";
 
 const featured = faqForSchema(
   (await getCollection("faq", (e) => e.data.featured)).sort((a, b) => a.data.order - b.data.order),
 );
+const base = Astro.site ?? Astro.url;
+// Bump only when the landing page's content really changes. Feeds WebPage dateModified here and
+// the sitemap lastmod (astro.config.mjs reads this line).
+const updated = new Date("2026-10-05");
 ---
 
 <BaseLayout
   title={site.name}
   description={site.description}
-  schema={[faqPage(featured), mobileApplication(Astro.site ?? Astro.url)]}
+  schema={[
+    webPage({ title: site.name, description: site.description, updated, path: "/" }, base),
+    faqPage(featured),
+    mobileApplication(base),
+  ]}
 >
   <Hero />
   <Why />

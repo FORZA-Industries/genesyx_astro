@@ -13,17 +13,27 @@ export const site = {
   legalName: "SF MEDIA & PR LTD",
   links: {
     appStore: "https://apps.apple.com/app/genesyx/id6787682466",
+    // The Android app on Google Play (live, Oct 2026).
+    playStore: "https://play.google.com/store/apps/details?id=com.genesyx.app",
     shop: "https://genesyx.co.uk/",
     // The shop's all-products page on genesyx.co.uk (live, Oct 2026).
     shopAll: "https://genesyx.co.uk/pages/shop",
   },
+  // What is on sale on genesyx.co.uk now and what is coming soon (confirmed by the business,
+  // Oct 2026). Prices change and live on the shop only: never repeat one here.
+  availability:
+    "XX Formula and XY Formula are available now from the Genesyx shop as a one-month box. A 3-month kit that includes the at-home tests is coming soon.",
   // Contact email for the site, app and genesyx.co.uk (confirmed by the business, Sept 2026).
   email: "info@genesyx.co.uk",
   locale: "en_GB",
   lang: "en-GB",
   // Not yet confirmed: company number, address, service area, release date.
   // Add them here (and they flow into the footer, JSON-LD and llms.txt) once supplied.
-  sameAs: ["https://genesyx.co.uk/", "https://apps.apple.com/app/genesyx/id6787682466"],
+  sameAs: [
+    "https://genesyx.co.uk/",
+    "https://apps.apple.com/app/genesyx/id6787682466",
+    "https://play.google.com/store/apps/details?id=com.genesyx.app",
+  ],
   disclaimer:
     "Evidence for the Shettles theory is mixed. Genesyx helps you follow the theory consistently; no outcome is guaranteed.",
 } as const;
