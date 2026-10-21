@@ -22,7 +22,8 @@ still needs.
 ## Business identity (keep consistent everywhere)
 
 Confirmed: name **Genesyx**, tagline **Try with intention.**, a 90-day XX / XY preconception programme
-inspired by the Shettles theory, pre-launch waitlist, canonical address **https://www.genesyx.life** (`genesyx.life` 308-redirects to it; hosted on Vercel).
+inspired by the Shettles theory, XX and XY Formula on sale at genesyx.co.uk as a one-month box, a 3-month kit
+with the at-home tests coming soon, a waitlist, canonical address **https://www.genesyx.life** (`genesyx.life` 308-redirects to it; hosted on Vercel).
 
 Official profiles in `sameAs` (Organization JSON-LD): genesyx.co.uk, App Store, Google Play.
 
@@ -32,8 +33,10 @@ Add them to `src/data/site.ts` once verified.
 
 ## Freshness and review cadence
 
-A page's `updated` date (shown on the page and in `dateModified`) changes only when its content really
-changes. Review on this schedule and bump `updated` only if something was revised:
+A page's `updated` date (`dateModified` in its JSON-LD and `lastmod` in the sitemap; not shown on the
+page) changes only when its content really changes. Guides keep it in their frontmatter, `/faq`, `/about`
+and `/contact` in the page file, the home page in `src/pages/index.astro`; `/learn` follows its newest
+guide. Review on this schedule and bump `updated` only if something was revised:
 
 | Page type                                                                                                     | Review every                                                 | Owner                                 |
 | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------- |

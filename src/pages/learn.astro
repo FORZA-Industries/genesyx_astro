@@ -13,6 +13,8 @@ const title = "Learn: guides to the Shettles method and vaginal pH";
 const description =
   "Evidence-based guides to the Shettles method, vaginal pH, ovulation tests and trying for a girl or boy, plus the Genesyx XX and XY programmes.";
 const base = Astro.site ?? Astro.url;
+// The hub is as fresh as its newest guide; the sitemap lastmod follows the same rule.
+const newest = new Date(Math.max(...all.map((g) => g.data.updated.getTime())));
 
 const collection = {
   "@type": "CollectionPage",
@@ -20,6 +22,7 @@ const collection = {
   url: abs("/learn", base),
   name: title,
   description,
+  dateModified: newest.toISOString(),
   inLanguage: site.lang,
   isPartOf: { "@id": abs("/#website", base) },
   mainEntity: {

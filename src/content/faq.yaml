@@ -94,12 +94,13 @@
     permitted in the UK. Genesyx is not a medical or fertility treatment; it helps couples follow
     lifestyle and timing guidance while conceiving naturally.
 
-# TODO(genesyx): release window and any founding-member offer.
+# TODO(genesyx): release window for the 3-month kit and any founding-member offer.
 - id: release-date
   order: 11
   question: When is Genesyx available?
   answer: >-
-    Genesyx is preparing its first release. Join the XX or XY waitlist to be told first when your
+    XX Formula and XY Formula are available now from the Genesyx shop as a one-month box. A 3-month kit
+    that includes the at-home tests is coming soon. Join the XX or XY waitlist to be told first when your
     programme is available.
 
 - id: data-privacy
