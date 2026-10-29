@@ -1,5 +1,5 @@
 ---
-import { paths } from "@/data/site";
+import { paths, site } from "@/data/site";
 ---
 
 <section id="join" class="wrap scroll-mt-20">
@@ -11,9 +11,9 @@ import { paths } from "@/data/site";
       <p class="eyebrow">Try with intention</p>
       <h2 class="display-md mt-4">Which path are you hoping for?</h2>
       <p class="mt-5 max-w-sm text-sm leading-relaxed">
-        Join the first-release list for your route. We'll email you once, when your programme is
-        ready.
+        Join the waitlist for your route. We'll email you once, when your programme is ready.
       </p>
+      <p class="mt-4 max-w-sm text-xs leading-relaxed text-muted">{site.availability}</p>
     </div>
 
     <form id="waitlist" method="post" class="space-y-5" novalidate>
@@ -27,7 +27,7 @@ import { paths } from "@/data/site";
             <label class="flex cursor-pointer items-center gap-5 border-b border-line py-4 text-ink has-checked:bg-white/70">
               <input type="radio" name="path" value={key} required class="size-4 accent-ink" />
               <span class="w-8 font-display text-lg font-medium">{paths[key].label}</span>
-              <span class="text-xs">Join the {paths[key].label} first release</span>
+              <span class="text-xs">Join the {paths[key].label} waitlist</span>
               <span class="ml-auto text-xs text-muted">{paths[key].hope}</span>
             </label>
           ))}

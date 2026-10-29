@@ -42,7 +42,8 @@ export function mobileApplication(base: URL | string): Thing {
     "@id": abs("/#app", base),
     name: site.name,
     url: site.links.appStore,
-    operatingSystem: "iOS 16.0 or later",
+    installUrl: [site.links.appStore, site.links.playStore],
+    operatingSystem: "iOS 16.0 or later, Android",
     applicationCategory: "HealthApplication",
     offers: { "@type": "Offer", price: "0", priceCurrency: "GBP" },
     publisher: { "@id": abs("/#organization", base) },
@@ -99,7 +100,14 @@ export function article(
 }
 
 export function webPage(
-  data: { title: string; description: string; updated: Date; path: string; image?: string },
+  data: {
+    title: string;
+    description: string;
+    updated: Date;
+    published?: Date;
+    path: string;
+    image?: string;
+  },
   base: URL | string,
 ): Thing {
   return {
@@ -108,6 +116,7 @@ export function webPage(
     url: abs(data.path, base),
     name: data.title,
     description: data.description,
+    ...(data.published ? { datePublished: data.published.toISOString() } : {}),
     dateModified: data.updated.toISOString(),
     inLanguage: site.lang,
     isPartOf: { "@id": abs("/#website", base) },

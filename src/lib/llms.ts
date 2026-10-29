@@ -1,5 +1,5 @@
 import { getCollection } from "astro:content";
-import { site } from "@/data/site";
+import { paths, site } from "@/data/site";
 
 // Builds /llms.txt per https://llmstxt.org: H1, blockquote summary, then H2 link lists.
 // A convenience index only; the HTML pages, sitemap and structured data remain the source of truth.
@@ -21,11 +21,12 @@ export async function buildLlms(base: URL): Promise<string> {
     "- Two routes: XX (for couples hoping for a girl) and XY (for couples hoping for a boy).",
     `- ${site.disclaimer}`,
     "- Genesyx is not a medical device or fertility treatment.",
-    `- Pre-launch: people can join the first-release waitlist at ${url("/#join")}.`,
+    `- ${site.availability}`,
+    `- Waitlist: people can join the XX or XY list at ${url("/#join")} to be emailed when their programme is ready.`,
     "",
     "## Programme",
     "",
-    `- [Genesyx home](${url("/")}): What the 90-day programme includes and how to join the waitlist.`,
+    `- [Genesyx home](${url("/")}): What the 90-day programme includes, what is available now and how to join the waitlist.`,
     ...programmes.map(link),
     "",
     "## Guides",
@@ -46,7 +47,13 @@ export async function buildLlms(base: URL): Promise<string> {
     "",
     `- [Genesyx website](${url("/")}): This site, the programme and guides.`,
     `- [Genesyx for iPhone](${site.links.appStore}): The Genesyx companion app on the App Store.`,
+    `- [Genesyx for Android](${site.links.playStore}): The Genesyx companion app on Google Play.`,
     `- [Genesyx shop](${site.links.shop}): The Genesyx online shop.`,
+    `- [All Genesyx products](${site.links.shopAll}): Every product on the Genesyx shop.`,
+    ...Object.values(paths).map(
+      (p) =>
+        `- [${p.product}](${p.productUrl}): The ${p.label} route's formula on the Genesyx shop.`,
+    ),
     `- Genesyx is operated by ${site.legalName}.`,
     "",
   ].join("\n");

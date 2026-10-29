@@ -51,7 +51,8 @@ Hosted on **Vercel** (project `genesyx-astro`); DNS for `genesyx.life` is at **I
 
 - Merging to `main` deploys production; every PR gets a preview URL.
 - `vercel.json` sets the build, clean URLs (`/faq` serves `faq.html`), security/cache headers and
-  redirects for retired URLs.
+  redirects for retired URLs, `/sitemap.xml` and the `genesyx-astro.vercel.app` alias (to the
+  canonical host, so the alias is not crawled as a duplicate).
 - Domains: `www.genesyx.life` is primary; `genesyx.life` redirects to it (Vercel → Settings → Domains).
 - ICUK DNS: `www` CNAME to the Vercel value shown in the dashboard, `@` A `76.76.21.21`. Leave the MX,
   SPF and Bing verification records alone.
